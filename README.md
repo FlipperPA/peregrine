@@ -4,8 +4,13 @@ An opinionated blogging platform for Wagtail on the Django web framework.
 
 ## Get Started
 
+### System
+
     mkvirtualenv my_blog
     pip install peregrine
+
+
+### Settings
 
     INSTALLED_APPS = [
         ...
@@ -24,6 +29,7 @@ An opinionated blogging platform for Wagtail on the Django web framework.
     	'wagtail.wagtailredirects',
     	'wagtail.wagtailforms',
     	'wagtail.contrib.table_block',
+
         'wagtailcodeblock',
         'wagtailcontentstream',
         'peregrine',
@@ -43,3 +49,25 @@ An opinionated blogging platform for Wagtail on the Django web framework.
     ]
 
     MIDDLEWARE += PEREGRINE_MIDDLEWARE
+
+    WAGTAIL_SITE_NAME = 'My Blog'
+
+### URLs
+
+    from django.conf.urls import url, include
+    from django.contrib import admin
+
+    from wagtail.wagtailcore import urls as wagtail_urls
+    from wagtail.wagtailadmin import urls as wagtailadmin_urls
+    from wagtail.wagtaildocs import urls as wagtaildocs_urls
+
+
+
+    urlpatterns = [
+        url(r'^admin/', admin.site.urls),
+
+        # Peregrine URLs for Wagtail
+        url(r'^documents/', include(wagtaildocs_urls)),
+        url(r'^cms/', include(wagtailadmin_urls)),
+        url(r'', include(wagtail_urls)),
+    ]
