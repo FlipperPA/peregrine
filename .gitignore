@@ -1,0 +1,62 @@
+/media
+
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+
+# Logs:
+*.log
+
+# Eclipse
+.project
+
+# Linux Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+*.swp
+*.swo
+
+# Mac
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Dev tools
+.idea
+.vagrant
+
+# Ignore local configurations
+config/settings/local.py
+db.sqlite3
+
+# Node modules
+node_modules/
+
+# Bower components
+bower_components/
+
+# Coverage
+htmlcov/
+.coverage
+
+# dumpdata file
+db.json
+/static
+/config/settings/user.py
