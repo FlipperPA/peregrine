@@ -78,3 +78,9 @@ urlpatterns = [
     url(r'', include(wagtail_urls)),
 ]
 ```
+
+## Contributors
+
+* Timothy Allen (https://github.com/FlipperPA/)
+* Jon Banafato (https://github.com/jonafato/)
+* Jeff Triplett (https://github.com/jefftriplett/)
