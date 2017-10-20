@@ -1,0 +1,63 @@
+{% load staticfiles %}
+{% load peregrine_tags %}
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+{% spaceless %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {# <link rel="icon" href="{% static "favicon.ico" %}"> #}
+    <title>{% block site_title %}SEPIA{% endblock site_title %}</title>
+    {% block extra_head_top %}
+    {% endblock extra_head_top %}
+
+    {% block head_js %}
+    {% endblock head_js %}
+
+    {% block head_css %}
+    {% endblock head_css %}
+
+    {% block extra_head_bottom %}
+    {% endblock extra_head_bottom %}
+</head>
+{% endspaceless %}
+<body role="document" id="page-top" class="index" style="padding-top: 55px;">
+<!--[if lte IE 11]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser.
+  Please <a href="http://browsehappy.com/">upgrade your browser</a>
+  to improve your experience.
+  </p>
+<![endif]-->
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            Peregrine
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'meetings' %}"><span class="icon icon-fa-graduation-cap"></span> Meetings</a></li>
+                {% get_site_root as site_root %}
+                {% top_menu parent=site_root calling_page=self %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock header %}
+<div class="container">
+{% block content %}
+
+{% endblock content %}
+</div class="container">
+</body>
+</html>
+
