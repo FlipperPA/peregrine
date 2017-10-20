@@ -8,67 +8,71 @@ There instructions will be fleshed out, but if you want to give it a try, here's
 
 ### System
 
-    mkvirtualenv my_blog
-    pip install peregrine
+```shell
+mkvirtualenv my_blog
+pip install peregrine
+```
 
 ### Settings
 
-    INSTALLED_APPS = [
-        ...
-    ]
+```python
+INSTALLED_APPS = [
+    ...
+]
 
-    PEREGRINE_APPS = [
-        'wagtail.wagtailcore',
-        'wagtail.wagtailadmin',
-        'wagtail.wagtaildocs',
-        'wagtail.wagtailsnippets',
-        'wagtail.wagtailusers',
-        'wagtail.wagtailimages',
-        'wagtail.wagtailembeds',
-        'wagtail.wagtailsearch',
-        'wagtail.wagtailsites',
-        'wagtail.wagtailredirects',
-        'wagtail.wagtailforms',
-        'wagtail.contrib.table_block',
+PEREGRINE_APPS = [
+    'wagtail.wagtailcore',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailforms',
+    'wagtail.contrib.table_block',
 
-        'wagtailcodeblock',
-        'wagtailcontentstream',
-        'peregrine',
-        'taggit',
-        'modelcluster',
-    ]
+    'wagtailcodeblock',
+    'wagtailcontentstream',
+    'peregrine',
+    'taggit',
+    'modelcluster',
+]
 
-    INSTALLED_APPS += PEREGRINE_APPS
+INSTALLED_APPS += PEREGRINE_APPS
 
-    MIDDLEWARE = [
-        ...
-    ]
+MIDDLEWARE = [
+    ...
+]
 
-    PEREGRINE_MIDDLEWARE = [
-        'wagtail.wagtailcore.middleware.SiteMiddleware',
-        'wagtail.wagtailredirects.middleware.RedirectMiddleware',
-    ]
+PEREGRINE_MIDDLEWARE = [
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+]
 
-    MIDDLEWARE += PEREGRINE_MIDDLEWARE
+MIDDLEWARE += PEREGRINE_MIDDLEWARE
 
-    WAGTAIL_SITE_NAME = 'My Blog'
+WAGTAIL_SITE_NAME = 'My Blog'
+```
 
 ### URLs
 
-    from django.conf.urls import url, include
-    from django.contrib import admin
+```python
+from django.conf.urls import url, include
+from django.contrib import admin
 
-    from wagtail.wagtailcore import urls as wagtail_urls
-    from wagtail.wagtailadmin import urls as wagtailadmin_urls
-    from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.wagtailcore import urls as wagtail_urls
+from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
 
-
-    urlpatterns = [
-        url(r'^admin/', admin.site.urls),
-
-        # Peregrine URLs for Wagtail
-        url(r'^documents/', include(wagtaildocs_urls)),
-        url(r'^cms/', include(wagtailadmin_urls)),
-        url(r'', include(wagtail_urls)),
-    ]
+    # Peregrine URLs for Wagtail
+    url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^cms/', include(wagtailadmin_urls)),
+    url(r'', include(wagtail_urls)),
+]
+```
