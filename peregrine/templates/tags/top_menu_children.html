@@ -1,0 +1,5 @@
+{% load meetings_tags wagtailcore_tags %}
+
+{% for child in menuitems_children %}
+    <a class="dropdown-item" href="{% pageurl child %}">{{ child.title }}</a>
+{% endfor %}

@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+{% load meetings_tags %}
+{% for menuitem in menuitems %}
+    {% if menuitem.show_dropdown %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">{{ menuitem.title }}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown-settings">
+                {% top_menu_children parent=menuitem %}
+            </div>
+        </li>
+    {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+    {% endif %}
+{% endfor %}
