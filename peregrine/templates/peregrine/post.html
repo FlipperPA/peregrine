@@ -1,0 +1,12 @@
+{% extends 'peregrine/base.html' %}
+
+<h1>{{ page.title }}</h2>
+<p>
+by {% for author in page.authors %}
+    {{ author.username }}
+{% empty %}
+    Nobody
+{% endfor}}
+on {{ page.date }}
+</p>
+{{ page.body }}
