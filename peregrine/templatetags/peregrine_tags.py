@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -50,3 +51,13 @@ def top_menu_children(context, parent):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+
+@register.simple_tag
+def settings_value(name):
+    """
+    Allows a value from Django's settings to be included in a template tag.
+    """
+    return getattr(settings, name, "")
+    print('Hello!')
+    print(name)

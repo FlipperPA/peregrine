@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     {# <link rel="icon" href="{% static "favicon.ico" %}"> #}
-    <title>{% block site_title %}SEPIA{% endblock site_title %}</title>
+    <title>{% block site_title %}{% settings_value 'WAGTAIL_SITE_NAME' %}{% endblock site_title %}</title>
     {% block extra_head_top %}
     {% endblock extra_head_top %}
 
@@ -38,7 +38,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">
-            Peregrine
+            {% settings_value 'WAGTAIL_SITE_NAME' %}
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -65,4 +65,3 @@
 {% endblock footer %}
 </body>
 </html>
-
