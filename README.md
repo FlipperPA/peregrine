@@ -80,6 +80,19 @@ urlpatterns = [
 ]
 ```
 
+### Fire it up!
+
+After you've set up your settings, we need to create your database and a superuser.
+
+```shell
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver 0:8000
+```
+
+You should then be able to navigate to http://localhost:8000/cms/ and log in, and start creating!
+
+
 ## Contributors
 
 * Timothy Allen (https://github.com/FlipperPA/)
