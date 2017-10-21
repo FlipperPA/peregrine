@@ -36,6 +36,7 @@ PEREGRINE_APPS = [
     'wagtail.wagtailforms',
     'wagtail.contrib.table_block',
 
+    'bootstrap4',
     'wagtailcodeblock',
     'wagtailcontentstream',
     'peregrine',

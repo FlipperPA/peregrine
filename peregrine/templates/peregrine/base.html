@@ -1,5 +1,4 @@
-{% load staticfiles %}
-{% load peregrine_tags %}
+{% load staticfiles bootstrap4 peregrine_tags %}
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -21,6 +20,7 @@
     {% endblock head_js %}
 
     {% block head_css %}
+        {% bootstrap_css %}
     {% endblock head_css %}
 
     {% block extra_head_bottom %}
@@ -45,7 +45,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'meetings' %}"><span class="icon icon-fa-graduation-cap"></span> Meetings</a></li>
                 {% get_site_root as site_root %}
                 {% top_menu parent=site_root calling_page=self %}
             </ul>
@@ -58,6 +57,12 @@
 
 {% endblock content %}
 </div class="container">
+{% block footer %}
+    {% block footer_js %}
+        {% bootstrap_jquery %}
+        {% bootstrap_javascript %}
+    {% endblock footer_js %}
+{% endblock footer %}
 </body>
 </html>
 

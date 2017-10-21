@@ -12,6 +12,7 @@ setup(
     install_requires=[
         'wagtail>=1.8',
         'wagtailcontentstream',
+        'django-bootstrap4',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
