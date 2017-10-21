@@ -1,2 +1,3 @@
 include README.md
 recursive-include peregrine/templates *
+recursive-include peregrine/fixtures *
