@@ -88,8 +88,12 @@ urlpatterns = [
 
 After you've set up your settings, we need to create your database and a superuser. Issue the following commands from your project root directory.
 
+*Only run the command `peregrine_initial_site` if you are running on a new project, as it loads database fixtures!*
+
+
 ```shell
 python manage.py migrate
+python manage.py peregrine_initial_site
 python manage.py createsuperuser
 python manage.py runserver 0:8000
 ```
