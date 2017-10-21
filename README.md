@@ -4,7 +4,7 @@ Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https
 
 *This is very much pre-alpha software, in heavy active development!*
 
-## Get Started
+## Getting Started: the Five Minute Install
 
 There instructions will be fleshed out, but if you want to give it a try, here are the basics.
 
