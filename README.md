@@ -13,9 +13,13 @@ There instructions will be fleshed out, but if you want to give it a try, here's
 ```shell
 mkvirtualenv my_blog
 pip install peregrine
+django-admin startproject my_blog
+cd my_blog
 ```
 
 ### Settings
+
+Your settings file will be located in `my_blog/settings.py` if you're using the default Django project layout created by the `startproject` command above. You'll need to add the sections beneath `INSTALLED_APPS` and `MIDDLEWARE` in your settings to look like this.
 
 ```python
 INSTALLED_APPS = [
@@ -82,7 +86,7 @@ urlpatterns = [
 
 ### Fire it up!
 
-After you've set up your settings, we need to create your database and a superuser.
+After you've set up your settings, we need to create your database and a superuser. Issue the following commands from your project root directory.
 
 ```shell
 python manage.py migrate
