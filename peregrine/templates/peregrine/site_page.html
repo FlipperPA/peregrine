@@ -1,0 +1,14 @@
+{% extends 'peregrine/base.html' %}
+
+{% block content %}
+    {% block page_header %}
+        <div class="jumbotron">
+            <h1 class="display-3">{{ page.title }}</h1>
+            <p class="lead">{{ page.excerpt|safe }}</p>
+            {% block jumbotron_bottom %}
+            {% endblock jumbotron_bottom %}
+        </div>
+    {% endblock page_header %}
+
+    {{ page.body }}
+{% endblock content %}
