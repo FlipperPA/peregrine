@@ -6,7 +6,7 @@ Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https
 
 ## Get Started
 
-There instructions will be fleshed out, but if you want to give it a try, here's the basic gist of it if you know what you're doing in Django.
+There instructions will be fleshed out, but if you want to give it a try, here are the basics.
 
 ### System
 
