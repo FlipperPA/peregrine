@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.timezone import now
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtailcontentstream.models import ContentStreamPage
@@ -29,7 +29,7 @@ class SitePage(ContentStreamPage):
         FieldPanel('title'),
         ImageChooserPanel('header_image'),
         FieldPanel('excerpt'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
     ]
 
     class Meta:
@@ -53,7 +53,7 @@ class SitePost(SitePage):
         FieldPanel('authors'),
         ImageChooserPanel('header_image'),
         FieldPanel('excerpt'),
-        FieldPanel('body'),
+        StreamFieldPanel('body'),
     ]
 
     class Meta:
