@@ -12,7 +12,8 @@ There instructions will be fleshed out, but if you want to give it a try, here a
 
 ```shell
 mkvirtualenv my_blog
-pip install peregrine
+# pip install peregrine # Coming soon! We've opened a ticket with PyPI to get the peregrine namespace.
+pip install git+https://github.com/FlipperPA/peregrine.git
 django-admin startproject my_blog
 cd my_blog
 ```
