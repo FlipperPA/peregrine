@@ -21,13 +21,14 @@
 
     {% block head_css %}
         {% bootstrap_css %}
+        <link href="{% static 'peregrine/peregrine-style.css' %}" rel="stylesheet">
     {% endblock head_css %}
 
     {% block extra_head_bottom %}
     {% endblock extra_head_bottom %}
 </head>
 {% endspaceless %}
-<body role="document" id="page-top" class="index" style="padding-top: 55px;">
+<body role="document" id="page-top" class="index fixed-nav">
 <!--[if lte IE 11]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser.
   Please <a href="http://browsehappy.com/">upgrade your browser</a>
