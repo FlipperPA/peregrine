@@ -1,3 +1,9 @@
 .fixed-nav {
     padding-top: 60px;
 }
+
+.heading {
+    border-bottom: 1px dotted;
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+}
