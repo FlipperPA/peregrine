@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 ]
 
 PEREGRINE_APPS = [
+    'django.contrib.sites',
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
     'wagtail.wagtaildocs',
