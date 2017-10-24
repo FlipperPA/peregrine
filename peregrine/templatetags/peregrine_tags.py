@@ -59,5 +59,3 @@ def settings_value(name):
     Allows a value from Django's settings to be included in a template tag.
     """
     return getattr(settings, name, "")
-    print('Hello!')
-    print(name)
