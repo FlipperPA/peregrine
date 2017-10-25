@@ -10,7 +10,6 @@ setup(
     packages=find_packages(),
     zip_safe=False,
     install_requires=[
-        'git+https://github.com/FlipperPA/django-1.11-zappa.git',  # Temporarily monkey patch until Django 2.0 release
         'wagtail>=1.8',
         'wagtailcontentstream',
         'django-bootstrap4',
