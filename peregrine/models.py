@@ -46,6 +46,7 @@ class SitePost(SitePage):
         blank=True,
         help_text='The authors of the post.',
     )
+    show_in_menus_default = True
 
     content_panels = [
         FieldPanel('title'),
