@@ -1,5 +1,5 @@
 {% load peregrine wagtailcore_tags %}
 
-{% for child in menuitems_children %}
+{% for child in menu_items_children %}
     <a class="dropdown-item" href="{% pageurl child %}">{{ child.title }}</a>
 {% endfor %}

@@ -1,14 +1,14 @@
 {% load wagtailcore_tags %}
 {% load peregrine %}
-{% for menuitem in menuitems %}
-    {% if menuitem.show_dropdown %}
+{% for menu_item in menu_items %}
+    {% if menu_item.show_dropdown %}
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">{{ menuitem.title }}</a>
+            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">{{ menu_item.title }}</a>
             <div class="dropdown-menu" aria-labelledby="dropdown-settings">
-                {% top_menu_children parent=menuitem %}
+                {% top_menu_children parent=menu_item %}
             </div>
         </li>
     {% else %}
-        <li class="nav-item"><a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% pageurl menu_item %}">{{ menu_item.title }}</a></li>
     {% endif %}
 {% endfor %}
