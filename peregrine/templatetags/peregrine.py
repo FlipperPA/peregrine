@@ -30,8 +30,8 @@ def top_menu(context, parent, calling_page=None):
         live=True,
         show_in_menus=True
     )
-    for menuitem in menu_items:
-        menuitem.show_dropdown = has_menu_children(menuitem)
+    for menu_item in menu_items:
+        menu_item.show_dropdown = has_menu_children(menu_item)
     return {
         'calling_page': calling_page,
         'menu_items': menu_items,
