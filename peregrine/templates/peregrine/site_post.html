@@ -3,11 +3,14 @@
 {% block jumbotron_bottom %}
     <hr class="my-4">
     <p>
-    by {% for author in page.authors %}
+    by
+    {% comment %}
+    {% for author in page.authors %}
         {{ author.username }}
     {% empty %}
         Nobody
-    {% endfor}}
+    {% endfor %}
+    {% endcomment %}
     on {{ page.date }}
     </p>
 {% endblock jumbotron_bottom %}

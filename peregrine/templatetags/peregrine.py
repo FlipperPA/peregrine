@@ -28,9 +28,13 @@ def top_menu(context, parent, calling_page=None):
     """
     menu_items = parent.get_children().filter(
         live=True,
-        show_in_menus=True
+        show_in_menus=True,
+        content_type__model='sitepage',
     )
+    from pprint import pprint
     for menu_item in menu_items:
+        pprint(dir(menu_item))
+        print(menu_item.content_type)
         menu_item.show_dropdown = has_menu_children(menu_item)
     return {
         'calling_page': calling_page,
@@ -67,11 +71,11 @@ def top_menu_posts(context):
         '-post_date',
     )[:10]
 
-    show_posts = posts > 0
+    show_posts = posts.count() > 0
 
     return {
-        posts,
-        show_posts,
+        'posts': posts,
+        'show_posts': show_posts,
     }
 
 
