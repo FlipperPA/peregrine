@@ -1,4 +1,4 @@
-{% load staticfiles bootstrap4 peregrine %}
+{% load staticfiles bootstrap4 peregrine wagtailuserbar %}
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -26,6 +26,7 @@
 
     {% block extra_head_bottom %}
     {% endblock extra_head_bottom %}
+    {% wagtailuserbar 'bottom-right' %}
 </head>
 {% endspaceless %}
 <body role="document" id="page-top" class="index fixed-nav">
