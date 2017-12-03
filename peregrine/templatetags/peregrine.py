@@ -31,10 +31,10 @@ def top_menu(context, parent, calling_page=None):
         show_in_menus=True,
         content_type__model='sitepage',
     )
-    from pprint import pprint
+    # from pprint import pprint
     for menu_item in menu_items:
-        pprint(dir(menu_item))
-        print(menu_item.content_type)
+    #    pprint(dir(menu_item))
+    #    print(menu_item.content_type)
         menu_item.show_dropdown = has_menu_children(menu_item)
     return {
         'calling_page': calling_page,
