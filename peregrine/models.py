@@ -11,12 +11,24 @@ from wagtail.wagtailsearch import index
 from wagtailcontentstream.models import ContentStreamPage
 
 
+class Settings(models.Model):
+    """
+    Key / value store for Peregrine's settings.
+    """
+    key = models.CharField(unique=True, max_length=255)
+    value = models.CharField(max_length=255)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['key'], name='settings_key_idx'),
+        ]
+
+
 class Category(models.Model):
     """
     Categories which a Page or Post item can belong to. A page can belong to
     many categories.
     """
-
     name = models.CharField(max_length=255)
 
     class Meta:
