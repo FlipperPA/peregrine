@@ -1,11 +1,28 @@
 from django.conf import settings
 from django.db import models
+from django.forms import CheckboxSelectMultiple
 from django.utils.timezone import now
 
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtailcontentstream.models import ContentStreamPage
+
+
+class Category(models.Model):
+    """
+    Categories which a Page or Post item can belong to. A page can belong to
+    many categories.
+    """
+
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'categories'
 
 
 class SitePage(ContentStreamPage):
@@ -23,12 +40,14 @@ class SitePage(ContentStreamPage):
         null=True,
         help_text='An short excerpt or abstract about the content.'
     )
+    categories = ParentalManyToManyField('Category', blank=True)
     show_in_menus_default = True
 
     content_panels = [
         FieldPanel('title'),
         ImageChooserPanel('header_image'),
         FieldPanel('excerpt'),
+        FieldPanel('categories', widget=CheckboxSelectMultiple),
         StreamFieldPanel('body'),
     ]
 
@@ -54,6 +73,7 @@ class SitePost(SitePage):
         FieldPanel('authors'),
         ImageChooserPanel('header_image'),
         FieldPanel('excerpt'),
+        FieldPanel('categories', widget=CheckboxSelectMultiple),
         StreamFieldPanel('body'),
     ]
 
