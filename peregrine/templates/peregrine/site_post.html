@@ -4,13 +4,14 @@
     <hr class="my-4">
     <p>
     by
-    {% comment %}
-    {% for author in page.authors %}
+    {% for author in page.authors.all %}
+        {% if not forloop.first %}
+        , 
+        {% endif %}
         {{ author.username }}
     {% empty %}
         Nobody
     {% endfor %}
-    {% endcomment %}
-    on {{ page.date }}
+    on {{ page.post_date }}
     </p>
 {% endblock jumbotron_bottom %}

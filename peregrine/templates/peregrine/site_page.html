@@ -7,6 +7,11 @@
             <p class="lead">{{ page.excerpt|safe }}</p>
             {% block jumbotron_bottom %}
             {% endblock jumbotron_bottom %}
+            {% for category in page.categories.all %}
+                <div class="btn btn-small">
+                    {{ category.name }}
+                </div>
+            {% endfor %}
         </div>
     {% endblock page_header %}
 

@@ -79,7 +79,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    # Peregrine URLs for Wagtail
+    # Wagtail / Peregrine URLs
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^cms/', include(wagtailadmin_urls)),
     url(r'', include(wagtail_urls)),
