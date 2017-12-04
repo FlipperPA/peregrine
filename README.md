@@ -39,6 +39,7 @@ PEREGRINE_APPS = [
     'wagtail.wagtailsites',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
 
     'peregrine',
