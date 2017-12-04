@@ -7,6 +7,7 @@ from modelcluster.fields import ParentalManyToManyField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailsearch import index
 from wagtailcontentstream.models import ContentStreamPage
 
 
@@ -40,8 +41,17 @@ class SitePage(ContentStreamPage):
         null=True,
         help_text='An short excerpt or abstract about the content.'
     )
-    categories = ParentalManyToManyField('Category', blank=True)
+    categories = ParentalManyToManyField(
+        'Category',
+        blank=True,
+        help_text='The categories for the page or post.',
+    )
     show_in_menus_default = True
+
+    search_fields = ContentStreamPage.search_fields + [
+        index.SearchField('body'),
+        index.SearchField('excerpt'),
+    ]
 
     content_panels = [
         FieldPanel('title'),
@@ -60,7 +70,7 @@ class SitePost(SitePage):
         default=now,
         help_text='The date and time of the post.',
     )
-    authors = models.ManyToManyField(
+    authors = ParentalManyToManyField(
         settings.AUTH_USER_MODEL,
         blank=True,
         help_text='The authors of the post.',
