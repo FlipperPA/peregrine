@@ -5,11 +5,18 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import modelcluster.fields
 import wagtail.contrib.table_block.blocks
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
-import wagtail.wagtailembeds.blocks
-import wagtail.wagtailimages.blocks
+try:
+    import wagtail.core.blocks as wagtail.wagtailcore.blocks
+    import wagtail.core.fields as wagtail.wagtailcore.fields
+    import wagtail.documents.blocks as wagtail.wagtaildocs.blocks
+    import wagtail.embeds.blocks as wagtail.wagtailembeds.blocks
+    import wagtail.images.blocks as wagtail.wagtailimages.blocks
+except ImportError:
+    import wagtail.wagtailcore.blocks
+    import wagtail.wagtailcore.fields
+    import wagtail.wagtaildocs.blocks
+    import wagtail.wagtailembeds.blocks
+    import wagtail.wagtailimages.blocks
 
 
 class Migration(migrations.Migration):

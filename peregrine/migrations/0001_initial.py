@@ -7,10 +7,17 @@ from django.db import migrations, models
 import django.db.models.deletion
 import django.utils.timezone
 import wagtail.contrib.table_block.blocks
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailembeds.blocks
-import wagtail.wagtailimages.blocks
+
+try:
+    import wagtail.core.blocks as wc_blocks
+    import wagtail.core.fields as wc_fields
+    import wagtail.embeds.blocks as we_blocks
+    import wagtail.images.blocks as wi_blocks
+except ImportError:
+    import wagtail.wagtailcore.blocks as wc_blocks
+    import wagtail.wagtailcore.fields as wc_fields
+    import wagtail.wagtailembeds.blocks as we_blocks
+    import wagtail.wagtailimages.blocks as wi_blocks
 
 
 class Migration(migrations.Migration):
@@ -28,8 +35,8 @@ class Migration(migrations.Migration):
             name='SitePage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField((('heading', wagtail.wagtailcore.blocks.TextBlock(icon='title', template='wagtailcontentstream/blocks/heading.html')), ('paragraph', wagtail.wagtailcore.blocks.RichTextBlock(features=['bold', 'italic', 'link', 'ol', 'ul'], icon='pilcrow')), ('image', wagtail.wagtailcore.blocks.StructBlock((('image', wagtail.wagtailimages.blocks.ImageChooserBlock()), ('caption', wagtail.wagtailcore.blocks.TextBlock(required=False))))), ('embed', wagtail.wagtailembeds.blocks.EmbedBlock(icon='media')), ('table', wagtail.contrib.table_block.blocks.TableBlock(icon='table')), ('code', wagtail.wagtailcore.blocks.StructBlock((('language', wagtail.wagtailcore.blocks.ChoiceBlock(choices=[('bash', 'Bash/Shell'), ('css', 'CSS'), ('diff', 'diff'), ('http', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python'), ('scss', 'SCSS'), ('yaml', 'YAML')])), ('code', wagtail.wagtailcore.blocks.TextBlock())), icon='code'))), blank=True)),
-                ('excerpt', wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='An short excerpt or abstract about the content.', null=True)),
+                ('body', wc_fields.StreamField((('heading', wc_blocks.TextBlock(icon='title', template='wagtailcontentstream/blocks/heading.html')), ('paragraph', wc_blocks.RichTextBlock(features=['bold', 'italic', 'link', 'ol', 'ul'], icon='pilcrow')), ('image', wc_blocks.StructBlock((('image', wi_blocks.ImageChooserBlock()), ('caption', wc_blocks.TextBlock(required=False))))), ('embed', we_blocks.EmbedBlock(icon='media')), ('table', wagtail.contrib.table_block.blocks.TableBlock(icon='table')), ('code', wc_blocks.StructBlock((('language', wc_blocks.ChoiceBlock(choices=[('bash', 'Bash/Shell'), ('css', 'CSS'), ('diff', 'diff'), ('http', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python'), ('scss', 'SCSS'), ('yaml', 'YAML')])), ('code', wc_blocks.TextBlock())), icon='code'))), blank=True)),
+                ('excerpt', wc_fields.RichTextField(blank=True, help_text='An short excerpt or abstract about the content.', null=True)),
             ],
             options={
                 'verbose_name': 'Page',
