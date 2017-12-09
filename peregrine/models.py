@@ -5,17 +5,10 @@ from django.utils.timezone import now
 
 from modelcluster.fields import ParentalManyToManyField
 
-# Wagtail 2.0 compatibility - new package paths
-try:
-    from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
-    from wagtail.core.fields import RichTextField
-    from wagtail.images.edit_handlers import ImageChooserPanel
-    from wagtail.search import index
-except ImportError:
-    from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
-    from wagtail.wagtailcore.fields import RichTextField
-    from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-    from wagtail.wagtailsearch import index
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import RichTextField
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
 
 from wagtailcontentstream.models import ContentStreamPage
 

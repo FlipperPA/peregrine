@@ -3,11 +3,8 @@ from django.core.cache import cache
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, ModelAdminGroup, modeladmin_register
 )
-# Wagtail 2.0 compatibility - new package paths
-try:
-    from wagtail.core import hooks
-except ImportError:
-    from wagtail.wagtailcore import hooks
+
+from wagtail.core import hooks
 
 from .models import Category
 from .settings import get_clear_cache
