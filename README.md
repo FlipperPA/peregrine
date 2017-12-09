@@ -4,6 +4,8 @@ Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https
 
 *This is very much pre-alpha software, in heavy active development!*
 
+Peregrine will require at least Wagtail 2.0 and Django 2.0!
+
 ## Getting Started: the Five Minute Install
 
 There instructions will be fleshed out, but if you want to give it a try, here are the basics.
@@ -28,26 +30,24 @@ INSTALLED_APPS = [
 ]
 
 PEREGRINE_APPS = [
-    'wagtail.wagtailcore',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailforms',
+    'wagtail.core',
+    'wagtail.admin',
+    'wagtail.documents',
+    'wagtail.snippets',
+    'wagtail.users',
+    'wagtail.images',
+    'wagtail.embeds',
+    'wagtail.search',
+    'wagtail.sites',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
 
-    'peregrine',
     'bootstrap4',
+    'modelcluster',
+    'peregrine',
     'wagtailcodeblock',
     'wagtailcontentstream',
     'taggit',
-    'modelcluster',
 ]
 
 INSTALLED_APPS += PEREGRINE_APPS
@@ -57,8 +57,7 @@ MIDDLEWARE = [
 ]
 
 PEREGRINE_MIDDLEWARE = [
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
 ]
 
 MIDDLEWARE += PEREGRINE_MIDDLEWARE
@@ -72,8 +71,8 @@ WAGTAIL_SITE_NAME = 'My Blog'
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from wagtail.wagtailadmin import urls as wagtailadmin_urls
-from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
