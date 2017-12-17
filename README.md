@@ -22,7 +22,7 @@ cd my_blog
 
 ### Settings
 
-Your settings file will be located in `my_blog/settings.py` if you're using the default Django project layout created by the `startproject` command above. You'll need to add the sections beneath `INSTALLED_APPS` and `MIDDLEWARE` in your settings to look like this.
+Your settings file will be located in `my_blog/settings.py` if you're using the default Django project layout created by the `startproject` command above. You'll need to add the sections beneath `INSTALLED_APPS` and `MIDDLEWARE`, and add `'wagtail.contrib.settings.context_processors.settings',` to your `TEMPLATES` context processors in your settings to look like this.
 
 ```python
 INSTALLED_APPS = [
@@ -64,6 +64,22 @@ PEREGRINE_MIDDLEWARE = [
 MIDDLEWARE += PEREGRINE_MIDDLEWARE
 
 WAGTAIL_SITE_NAME = 'My Blog'
+
+
+TEMPLATES = [
+    {
+        ...
+
+        'OPTIONS': {
+            'context_processors': [
+                ...
+
+                'wagtail.contrib.settings.context_processors.settings',
+            ]
+        }
+    }
+]
+
 ```
 
 ### URLs

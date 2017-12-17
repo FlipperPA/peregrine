@@ -1,4 +1,4 @@
-{% load staticfiles bootstrap4 peregrine wagtailuserbar %}
+{% load staticfiles bootstrap4 peregrine wagtailsettings_tags wagtailuserbar %}
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -26,8 +26,8 @@
 
     {% block extra_head_bottom %}
     {% endblock extra_head_bottom %}
-    {% if settings_value post_number_rss %}
-        <link rel="alternate" type="application/rss+xml" title="{% settings_value 'WAGTAIL_SITE_NAME' %} - RSS" href="{% url 'peregrine-rss' %}">
+    {% if settings.peregrine.PeregrineSettings.post_number_rss %}
+        <link rel="alternate" type="application/rss+xml" title="{% settings_value 'WAGTAIL_SITE_NAME' %} - RSS" href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'peregrine-rss' %}">
     {% endif %}
 
     {% wagtailuserbar 'bottom-right' %}
