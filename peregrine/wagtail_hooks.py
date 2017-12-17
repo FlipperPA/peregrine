@@ -1,9 +1,10 @@
 from django.core.cache import cache
+from django.db import models
 
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, ModelAdminGroup, modeladmin_register
 )
-
+from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core import hooks
 
 from .models import Category
@@ -39,3 +40,22 @@ def clear_page_cache(request, page):
 
     if get_clear_cache():
         cache.clear()
+
+
+@register_setting
+class PeregrineSettings(BaseSetting):
+    landing_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        help_text='The page to display at the root. If blank, displays latest posts.'
+    )
+    post_number = models.IntegerField(
+        default=10,
+        help_text='The number of posts to display.',
+    )
+    post_number_nav = models.IntegerField(
+        default=10,
+        help_text='The number of posts to display in navigation.',
+    )
