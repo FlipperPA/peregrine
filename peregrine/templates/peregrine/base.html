@@ -26,6 +26,10 @@
 
     {% block extra_head_bottom %}
     {% endblock extra_head_bottom %}
+    {% if settings_value post_number_rss %}
+        <link rel="alternate" type="application/rss+xml" title="{% settings_value 'WAGTAIL_SITE_NAME' %} - RSS" href="{% url 'peregrine-rss' %}">
+    {% endif %}
+
     {% wagtailuserbar 'bottom-right' %}
 </head>
 {% endspaceless %}

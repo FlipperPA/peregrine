@@ -20,7 +20,7 @@ class PostsFeed(Feed):
     RSS feed to blog posts.
     """
     title = settings.WAGTAIL_SITE_NAME
-    link = "/blogs-feed/"
+    link = "/rss/"
     description = 'Blog posts from {site_name} as they are published.'.format(
         site_name=settings.WAGTAIL_SITE_NAME,
     )

@@ -44,12 +44,15 @@ def clear_page_cache(request, page):
 
 @register_setting
 class PeregrineSettings(BaseSetting):
+    """
+    Settings for the user to customize their Peregrine blog.
+    """
     landing_page = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        help_text='The page to display at the root. If blank, displays latest posts.'
+        help_text='The page to display at the root. If blank, displays the latest posts.'
     )
     post_number = models.IntegerField(
         default=10,
@@ -58,4 +61,8 @@ class PeregrineSettings(BaseSetting):
     post_number_nav = models.IntegerField(
         default=10,
         help_text='The number of posts to display in navigation.',
+    )
+    post_number_rss = models.IntegerField(
+        default=100,
+        help_text='The number of posts to include in the RSS feed.',
     )
