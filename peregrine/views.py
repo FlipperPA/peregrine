@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.views.generic import ListView
 
@@ -18,9 +19,11 @@ class PostsFeed(Feed):
     """
     RSS feed to blog posts.
     """
-    title = "My blog articles"
+    title = settings.WAGTAIL_SITE_NAME
     link = "/blogs-feed/"
-    description = "All of my blogs as they are published"
+    description = 'Blog posts from {site_name} as they are published.'.format(
+        site_name=settings.WAGTAIL_SITE_NAME,
+    )
 
     def items(self):
         return SitePost.objects.live().order_by('-post_date')
