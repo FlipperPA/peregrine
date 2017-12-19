@@ -13,7 +13,7 @@ from .settings import get_clear_cache
 
 class CategoryAdmin(ModelAdmin):
     model = Category
-    menu_label = 'Grid Categories'
+    menu_label = 'Manage Categories'
     menu_icon = 'fa-folder-open'
     add_to_settings_menu = False
     list_display = ('name',)
