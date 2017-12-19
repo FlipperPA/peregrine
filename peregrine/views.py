@@ -13,6 +13,7 @@ class PostsListView(ListView):
     template_name = 'peregrine/site_post_list.html'
     context_object_name = 'posts'
     paginate_by = 10
+    ordering = ['-post_date']
 
 
 class PostsFeed(Feed):
