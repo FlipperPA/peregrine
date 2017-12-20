@@ -36,4 +36,4 @@ class PostsFeed(Feed):
         return item.excerpt
 
     def item_link(self, item):
-        return item.full_url
+        return item.url
