@@ -1,19 +1,33 @@
 {% extends 'peregrine/base.html' %}
+{% load wagtailimages_tags %}
 
 {% block content %}
     {% block page_header %}
-        <div class="jumbotron">
-            <h1 class="display-3">{{ page.title }}</h1>
-            <p class="lead">{{ page.excerpt|safe }}</p>
-            {% block jumbotron_bottom %}
-            {% endblock jumbotron_bottom %}
-            {% for category in page.categories.all %}
-                <div class="btn btn-info btn-small">
-                    {{ category.name }}
+        {% if page.header_image %}
+            {% image page.header_image original as header_image %}
+            <header style="background-image: url({{ header_image.url }}); height=400; display: block;">
+                &nbsp;<br>&nbsp;<br>&nbsp;
+            </header>
+        {% else %}
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="display-3">{{ page.title }}</h1>
+                    <p class="lead">{{ page.excerpt|safe }}</p>
+                    {% block jumbotron_bottom %}
+                    {% endblock jumbotron_bottom %}
+                    {% for category in page.categories.all %}
+                        <div class="btn btn-info btn-small">
+                            {{ category.name }}
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
+            </div class="container">
+        {% endif %}
     {% endblock page_header %}
 
-    {{ page.body }}
+    <div class="container">
+        {{ page.body }}
+    </div class="container">
 {% endblock content %}
+
+

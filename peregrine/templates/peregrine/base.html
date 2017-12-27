@@ -40,7 +40,7 @@
   to improve your experience.
   </p>
 <![endif]-->
-{% block header %}
+{% block top_nav %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">
@@ -58,11 +58,11 @@
             </div>
         </div>
     </nav>
-{% endblock header %}
-<div class="container">
-    {% block content %}
-    {% endblock content %}
-</div class="container">
+{% endblock top_nav %}
+
+{% block content %}
+{% endblock content %}
+
 {% block footer %}
     {% block footer_js %}
         {% bootstrap_jquery %}
