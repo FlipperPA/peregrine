@@ -11,3 +11,31 @@
 .figure {
     z-index: 9999;
 }
+
+header {
+    text-align: center;
+    padding: 100px 0 100px 0;
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .intro-text {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    text-shadow: -1px 0 #777, 0 1px #777, 1px 0 #777, 0 -1px #777;
+}
+
+header .intro-text .intro-heading {
+    font-size: 30px;
+    /* font-weight: 700; */
+}
+
+header .intro-text .intro-lead-in {
+    font-size: 18px;
+}
