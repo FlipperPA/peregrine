@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+
+{% spaceless %}
+    <figure class="figure border rounded {% if self.align == 'left' %}float-left mr-2{% elif self.align == 'right' %}float-right ml-2{% elif self.align == 'center' %}text-center mx-auto d-block{% else %}text-center mx-auto d-block{% endif %}">
+        {% if self.align == 'full' %}
+            {% image self.image original class="figure-img img-fill" %}
+        {% else %}
+            {% image self.image original class="figure-img img-fluid" %}
+        {% endif %}
+
+        {% if self.caption|length %}
+            <figcaption>{{ self.caption }}</figcaption>
+        {% endif %}
+        {% if self.credit|length %}
+            <figcaption>Credit: {{ self.credit }}</figcaption>
+        {% endif %}
+    </figure>
+{% endspaceless %}
