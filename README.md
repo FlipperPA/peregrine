@@ -30,6 +30,13 @@ INSTALLED_APPS = [
 ]
 
 PEREGRINE_APPS = [
+    'peregrine',
+    'bootstrap4',
+    'wagtailcodeblock',
+    'wagtailcontentstream',
+    'taggit',
+    'modelcluster',
+
     'wagtail.core',
     'wagtail.admin',
     'wagtail.documents',
@@ -42,13 +49,6 @@ PEREGRINE_APPS = [
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.table_block',
-
-    'peregrine',
-    'bootstrap4',
-    'wagtailcodeblock',
-    'wagtailcontentstream',
-    'taggit',
-    'modelcluster',
 ]
 
 INSTALLED_APPS += PEREGRINE_APPS
