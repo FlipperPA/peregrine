@@ -1,13 +1,13 @@
 {% load wagtailimages_tags %}
 
-
-{# SET WIDTH of figure to be image width + 20px for padding? #}
 {% spaceless %}
-    <figure class="figure border {% if self.align == 'left' %}float-left mr-2{% elif self.align == 'right' %}float-right ml-2{% elif self.align == 'center' %}text-center mx-auto d-block{% else %}text-center mx-auto d-block{% endif %}">
+    <figure class="figure border {% if self.align == 'left' %}float-left mr-2{% elif self.align == 'right' %}float-right ml-2{% else %}text-center mx-auto d-block{% endif %}"{% if self.align == 'left' or self.align == 'right' %} style="width: 420px; padding: 10px;"{% endif %}>
         {% if self.align == 'full' %}
             {% image self.image original class="figure-img img-fill img-responsive" %}
-        {% else %}
+        {% elif self.align == 'center' %}
             {% image self.image original class="figure-img img-fluid img-responsive" %}
+        {% else %}
+            {% image self.image width-400 class="figure-img img-fluid img-responsive" %}
         {% endif %}
 
         {% if self.caption|length %}
