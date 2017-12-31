@@ -1,4 +1,4 @@
 {% load wagtailembeds_tags %}
-<div class="row video-wrapper">
-    <iframe src="{% embed self.embed %}" width="1920" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div class="row">
+<div class="row justify-content-center">
+    {% embed embed.url max_width=1920 %}
+</div>
