@@ -16,6 +16,20 @@ class PostsListView(ListView):
     ordering = ['-post_date']
 
 
+class AuthorPostsListView(PostsListView):
+    """
+    Paginated view of blog posts by an author.
+    """
+    pass
+
+
+class CategoryPostsListView(PostsListView):
+    """
+    Paginated view of blog posts by category.
+    """
+    pass
+
+
 class PostsFeed(Feed):
     """
     RSS feed to blog posts.
