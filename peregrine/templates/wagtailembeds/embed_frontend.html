@@ -1,4 +1,17 @@
 {% load wagtailembeds_tags %}
-<div class="row justify-content-center">
+
+{% if embed.ratio %}
+    {% if embed.ratio > 0.9 %}
+        <div class="embed-responsive embed-responsive-1by1">
+    {% elif embed.ratio > 0.7 %}
+        <div class="embed-responsive embed-responsive-4by3">
+    {% elif embed.ratio > 0.5 %}
+        <div class="embed-responsive embed-responsive-16by9">
+    {% else %}
+        <div class="embed-responsive embed-responsive-21by9">
+    {% endif %}
+{% else %}
+    <div class="row justify-content-center">
+{% endif %}
     {% embed embed.url max_width=1920 %}
 </div>
