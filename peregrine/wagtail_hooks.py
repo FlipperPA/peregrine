@@ -54,6 +54,11 @@ class PeregrineSettings(BaseSetting):
         on_delete=models.SET_NULL,
         help_text='The page to display at the root. If blank, displays the latest posts.'
     )
+    post_title = models.CharField(
+        max_length=30,
+        default="Posts",
+        help_text='The menu text label for latest posts.',
+    )
     post_number = models.IntegerField(
         default=10,
         help_text='The number of posts to display.',

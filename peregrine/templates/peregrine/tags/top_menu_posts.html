@@ -1,9 +1,10 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailsettings_tags %}
 {% load peregrine %}
 
 {% if show_posts %}
+    {% get_settings use_default_site=True %}
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">Posts</a>
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">{{ settings.peregrine.PeregrineSettings.post_title }}</a>
         <div class="dropdown-menu" aria-labelledby="dropdown-settings">
             {% for post in posts %}
                 <a class="dropdown-item" href="{% pageurl post %}">{{ post.title }}</a>
