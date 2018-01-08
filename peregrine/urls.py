@@ -6,6 +6,6 @@ from .views import PostsListView, PostsFeed
 
 urlpatterns = [
     url(r'rss/$', PostsFeed(), name='peregrine-rss'),
-    url(r'^$', PostsListView.as_view()),
+    url(r'^$', PostsListView.as_view(), name='posts'),
     url(r'', include(wagtail_urls)),
 ]

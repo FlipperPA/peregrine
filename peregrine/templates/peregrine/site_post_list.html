@@ -24,19 +24,27 @@
             {% endfor %}
             {# Pagination #}
             {% if is_paginated %}
-                <div class="pagination">
-                    <span class="page-links">
+                <nav>
+                    <ul class="pagination">
                         {% if page_obj.has_previous %}
-                            <a href="/posts?page={{ page_obj.previous_page_number }}">previous</a>
+                            <a class="page-link" href="/?page={{ page_obj.previous_page_number }}">Previous</a>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
                         {% endif %}
-                        <span class="page-current">
-                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                        </span>
+                        {% for page_num in "x"|ljust:page_obj.paginator.num_pages %}
+                            {% if forloop.counter == page_obj.number %}
+                                <li class="page-item active"><span class="page-link">{{ forloop.counter }}</span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="/?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                            {% endif %}
+                        {% endfor %}
                         {% if page_obj.has_next %}
-                            <a href="/posts?page={{ page_obj.next_page_number }}">next</a>
+                            <a class="page-link" href="/?page={{ page_obj.next_page_number }}">Next</a>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>
                         {% endif %}
-                    </span>
-                </div>
+                    </ul>
+                </nav>
             {% endif %}
         {% else %}
             <h2 class="heading">No Posts Found</h2>
