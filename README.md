@@ -122,5 +122,5 @@ You should then be able to navigate to http://localhost:8000/cms/ and log in, an
 
 * Timothy Allen (https://github.com/FlipperPA/)
 * Jon Banafato (https://github.com/jonafato/)
+* Rana Fayez (https://github.com/meetRanaFayez/)
 * Jeff Triplett (https://github.com/jefftriplett/)
-* Rana Fayez (https://github.com/meetRanaFayez)
