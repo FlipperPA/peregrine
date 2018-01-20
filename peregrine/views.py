@@ -20,7 +20,10 @@ class AuthorPostsListView(PostsListView):
     """
     Paginated view of blog posts by an author.
     """
-    pass
+    def get_queryset(self):
+        return SitePost.objects.filter(
+            authors__username=self.kwargs['name'],
+        )
 
 
 class CategoryPostsListView(PostsListView):
