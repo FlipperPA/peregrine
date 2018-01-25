@@ -24,7 +24,7 @@
                     {% if not forloop.first %}
                     , 
                     {% endif %}
-                    {{ author.username }}
+                    <a href="{% url 'posts-author' author.username %}">{{ author.username }}</a>
                 {% empty %}
                     Nobody
                 {% endfor %}
