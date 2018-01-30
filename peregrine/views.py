@@ -20,14 +20,30 @@ class AuthorPostsListView(PostsListView):
     """
     Paginated view of blog posts by an author.
     """
-    pass
+    def get_queryset(self):
+        return SitePost.objects.filter(
+            authors__username__iexact=self.kwargs.get('name', None),
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(AuthorPostsListView, self).get_context_data(**kwargs)
+        context['author'] = self.kwargs.get('name', None)
+        return context
 
 
 class CategoryPostsListView(PostsListView):
     """
     Paginated view of blog posts by category.
     """
-    pass
+    def get_queryset(self):
+        return SitePost.objects.filter(
+            categories__name__iexact=self.kwargs['name'],
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryPostsListView, self).get_context_data(**kwargs)
+        context['category'] = self.kwargs.get('name', None)
+        return context
 
 
 class PostsFeed(Feed):

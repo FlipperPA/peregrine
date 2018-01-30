@@ -64,6 +64,13 @@
 {% endblock content %}
 
 {% block footer %}
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container">
+            <span class="navbar-text">
+                Copyright &copy; {% now "Y" %}, {% settings_value 'WAGTAIL_SITE_NAME' %} 
+            </span>
+        </div>
+    </nav>
     {% block footer_js %}
         {% bootstrap_jquery %}
         {% bootstrap_javascript %}
