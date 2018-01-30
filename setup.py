@@ -10,7 +10,7 @@ setup(
     packages=find_packages(),
     zip_safe=False,
     install_requires=[
-        # 'wagtail>=2.0',
+        'wagtail==2.0b1',
         'wagtailcontentstream',
         'django-bootstrap4',
     ],
