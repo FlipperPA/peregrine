@@ -84,19 +84,19 @@ TEMPLATES = [
 ### URLs
 
 ```python
-from django.conf.urls import url, include
+from django.urls import include, path, re_path
 from django.contrib import admin
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path(r'^admin/', admin.site.urls),
 
     # Wagtail / Peregrine URLs
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^cms/', include(wagtailadmin_urls)),
-    url(r'^', include('peregrine.urls')),
+    path('^documents/', include(wagtaildocs_urls)),
+    path('^cms/', include(wagtailadmin_urls)),
+    re_path(r'^', include('peregrine.urls')),
 ]
 ```
 
