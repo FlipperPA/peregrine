@@ -44,16 +44,21 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">
+	        {% block navbar-logo %}
                 {% settings_value 'WAGTAIL_SITE_NAME' %}
+		{% endblock navbar-logo %}
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
+		    {% block navbar-left %}{% endblock navbar-left %}
                     {% top_menu_posts %}
+		    {% block navbar-center %}{% endblock navbar-center %}
                     {% get_site_root as site_root %}
                     {% top_menu parent=site_root calling_page=self %}
+		    {% block navbar-right %}{% endblock navbar-right %}
                 </ul>
             </div>
         </div>
@@ -67,7 +72,9 @@
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-text">
+	        {% block footer-copyright %}
                 Copyright &copy; {% now "Y" %}, {% settings_value 'WAGTAIL_SITE_NAME' %} 
+		{% endblock footer-copyright %}
             </span>
         </div>
     </nav>
