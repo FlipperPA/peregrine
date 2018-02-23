@@ -45,7 +45,7 @@
             </div>
             {# Pagination #}
             {% if is_paginated %}
-                <nav>
+                <nav class="float-right">
                     <ul class="pagination">
                         {% if page_obj.has_previous %}
                             <a class="page-link" href="/?page={{ page_obj.previous_page_number }}">Previous</a>
