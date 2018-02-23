@@ -84,18 +84,18 @@ TEMPLATES = [
 ### URLs
 
 ```python
-from django.urls import include, path, re_path
 from django.contrib import admin
+from django.urls import include, path, re_path
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 urlpatterns = [
-    path(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 
     # Wagtail / Peregrine URLs
-    path('^documents/', include(wagtaildocs_urls)),
-    path('^cms/', include(wagtailadmin_urls)),
+    path('documents/', include(wagtaildocs_urls)),
+    path('cms/', include(wagtailadmin_urls)),
     re_path(r'^', include('peregrine.urls')),
 ]
 ```
@@ -109,7 +109,7 @@ After you've set up your settings, we need to create your database and a superus
 
 ```shell
 python manage.py migrate
-python manage.py peregrine_initial_site
+python manage.py peregrine_initial_site  # Be sure to see the note above before running this. It isn't necessary if you don't want to.
 python manage.py createsuperuser
 python manage.py runserver 0:8000
 ```
