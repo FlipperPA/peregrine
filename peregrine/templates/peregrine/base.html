@@ -36,7 +36,7 @@
 <body role="document" id="page-top" class="index fixed-nav">
 <!--[if lte IE 11]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser.
-  Please <a href="http://browsehappy.com/">upgrade your browser</a>
+  Please <a href="https://browsehappy.com/">upgrade your browser</a>
   to improve your experience.
   </p>
 <![endif]-->
@@ -46,7 +46,7 @@
             <a class="navbar-brand" href="/">
 	        {% block navbar-logo %}
                 {% settings_value 'WAGTAIL_SITE_NAME' %}
-		{% endblock navbar-logo %}
+		    {% endblock navbar-logo %}
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -69,18 +69,18 @@
 {% endblock content %}
 
 {% block footer %}
+    <br clear="all">
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
             <span class="navbar-text">
 	        {% block footer-copyright %}
                 Copyright &copy; {% now "Y" %}, {% settings_value 'WAGTAIL_SITE_NAME' %} 
-		{% endblock footer-copyright %}
+		    {% endblock footer-copyright %}
             </span>
         </div>
     </nav>
     {% block footer_js %}
-        {% bootstrap_jquery %}
-        {% bootstrap_javascript %}
+        {% bootstrap_javascript jquery='full' %}
     {% endblock footer_js %}
 {% endblock footer %}
 </body>

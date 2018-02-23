@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name='wagtail-peregrine',
-    version="0.1dev1",
+    version="0.1dev2",
     description='Peregrine is an opinioned blog system for the Wagtail content management system on the Django Web Framework.',
     author='Tim Allen',
     author_email='tallen@wharton.upenn.edu',
@@ -12,7 +12,7 @@ setup(
     install_requires=[
         'wagtail==2.0rc1',
         'wagtailcontentstream',
-        'django-bootstrap4',
+        'django-bootstrap4>=0.0.6',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
