@@ -6,24 +6,12 @@ from django.utils.timezone import now
 from modelcluster.fields import ParentalManyToManyField
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from wagtailcontentstream.models import ContentStreamPage
-
-
-class Settings(models.Model):
-    """
-    Key / value store for Peregrine's settings.
-    """
-    key = models.CharField(unique=True, max_length=255)
-    value = models.CharField(max_length=255)
-
-    class Meta:
-        indexes = [
-            models.Index(fields=['key'], name='settings_key_idx'),
-        ]
 
 
 class Category(models.Model):
@@ -103,3 +91,34 @@ class SitePost(SitePage):
 
     class Meta:
         verbose_name = 'Post'
+
+
+@register_setting
+class PeregrineSettings(BaseSetting):
+    """
+    Settings for the user to customize their Peregrine blog.
+    """
+    landing_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        help_text='The page to display at the root. If blank, displays the latest posts.'
+    )
+    post_title = models.CharField(
+        max_length=30,
+        default="Posts",
+        help_text='The menu text label for latest posts.',
+    )
+    post_number = models.IntegerField(
+        default=10,
+        help_text='The number of posts to display.',
+    )
+    post_number_nav = models.IntegerField(
+        default=10,
+        help_text='The number of posts to display in navigation.',
+    )
+    post_number_rss = models.IntegerField(
+        default=100,
+        help_text='The number of posts to include in the RSS feed.',
+    )

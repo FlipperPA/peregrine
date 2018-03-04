@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.views.generic import ListView
 
-from .models import SitePost
+from .models import SitePost, PeregrineSettings
 
 
 class PostsListView(ListView):
@@ -14,6 +14,18 @@ class PostsListView(ListView):
     context_object_name = 'posts'
     paginate_by = 10
     ordering = ['-post_date']
+
+    def get(self, request, *args, **kwargs):
+        peregrine_settings = PeregrineSettings.for_site(request.site)
+        if peregrine_settings.landing_page is None:
+            # Render landing page
+            print(peregrine_settings.landing_page)
+            print(dir(peregrine_settings))
+        else:
+            # Render list of recent posts
+            response = super().get(*args, **kwargs)
+            return response
+
 
 
 class AuthorPostsListView(PostsListView):
