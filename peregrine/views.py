@@ -27,11 +27,11 @@ class PostsListView(ListView):
             return response
 
 
-
 class AuthorPostsListView(PostsListView):
     """
     Paginated view of blog posts by an author.
     """
+
     def get_queryset(self):
         return SitePost.objects.filter(
             authors__username__iexact=self.kwargs.get('name', None),
@@ -47,6 +47,7 @@ class CategoryPostsListView(PostsListView):
     """
     Paginated view of blog posts by category.
     """
+
     def get_queryset(self):
         return SitePost.objects.filter(
             categories__name__iexact=self.kwargs['name'],
