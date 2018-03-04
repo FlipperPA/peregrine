@@ -2,6 +2,8 @@ from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.views.generic import ListView
 
+from wagtail.core.views import serve
+
 from .models import SitePost, PeregrineSettings
 
 
@@ -18,13 +20,12 @@ class PostsListView(ListView):
     def get(self, request, *args, **kwargs):
         peregrine_settings = PeregrineSettings.for_site(request.site)
         if peregrine_settings.landing_page is None:
-            # Render landing page
-            print(peregrine_settings.landing_page)
-            print(dir(peregrine_settings))
-        else:
             # Render list of recent posts
-            response = super().get(*args, **kwargs)
+            response = super().get(request, *args, **kwargs)
             return response
+        else:
+            # Render landing page
+            return serve(request, peregrine_settings.landing_page.url)
 
 
 class AuthorPostsListView(PostsListView):
