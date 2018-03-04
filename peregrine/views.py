@@ -27,6 +27,11 @@ class PostsListView(ListView):
             # Render landing page
             return serve(request, peregrine_settings.landing_page.url)
 
+    def get_paginate_by(self, queryset):
+        peregrine_settings = PeregrineSettings.for_site(self.request.site)
+
+        return peregrine_settings.post_number
+
 
 class AuthorPostsListView(PostsListView):
     """
