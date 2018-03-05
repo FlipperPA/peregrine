@@ -11,11 +11,11 @@ class PostsListView(ListView):
     """
     Paginated view of blog posts.
     """
-    model = SitePost
     template_name = 'peregrine/site_post_list.html'
     context_object_name = 'posts'
-    paginate_by = 10
-    ordering = ['-post_date']
+
+    def get_queryset(self):
+        return SitePost.objects.live().order_by('-post_date')
 
     def get(self, request, *args, **kwargs):
         peregrine_settings = PeregrineSettings.for_site(request.site)
@@ -75,8 +75,12 @@ class PostsFeed(Feed):
         site_name=settings.WAGTAIL_SITE_NAME,
     )
 
-    def items(self):
-        return SitePost.objects.live().order_by('-post_date')
+    def get_object(self, request, *args, **kwargs):
+        kwargs['count'] = PeregrineSettings.for_site(request.site).post_number_rss
+        return kwargs['count']
+
+    def items(self, count):
+        return SitePost.objects.live().order_by('-post_date')[:count]
 
     def item_title(self, item):
         return item.title
