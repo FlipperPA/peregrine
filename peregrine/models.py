@@ -103,20 +103,20 @@ class PeregrineSettings(BaseSetting):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        help_text='The page to display at the root. If blank, displays the latest posts.'
+        help_text='The front page for Peregrine to display. If blank, displays the latest posts.'
     )
     post_title = models.CharField(
         max_length=30,
         default="Posts",
-        help_text='The menu text label for latest posts.',
+        help_text='The top navigation menu dropdown text label for latest posts.',
     )
     post_number = models.IntegerField(
         default=10,
-        help_text='The number of posts to display.',
+        help_text='The number of posts to display on the posts page.',
     )
     post_number_nav = models.IntegerField(
         default=10,
-        help_text='The number of posts to display in navigation.',
+        help_text='The number of posts to display in top navigation dropdown.',
     )
     post_number_rss = models.IntegerField(
         default=100,
