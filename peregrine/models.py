@@ -122,3 +122,6 @@ class PeregrineSettings(BaseSetting):
         default=100,
         help_text='The number of posts to include in the RSS feed.',
     )
+
+    class Meta:
+        verbose_name = "Peregrine Settings"

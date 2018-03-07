@@ -1,40 +1,52 @@
-from django.core.cache import cache
-
 from wagtail.contrib.modeladmin.options import (
-    ModelAdmin, ModelAdminGroup, modeladmin_register
+    ModelAdmin, modeladmin_register
 )
+from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
+from wagtail.admin.rich_text.editors.draftail.features import InlineStyleFeature
 from wagtail.core import hooks
 
 from .models import Category
-from .settings import get_clear_cache
 
 
 class CategoryAdmin(ModelAdmin):
     model = Category
-    menu_label = 'Manage Categories'
-    menu_icon = 'fa-folder-open'
-    add_to_settings_menu = False
+    menu_label = 'Peregrine Categories'
+    menu_icon = 'list-ul'
+    add_to_settings_menu = True
     list_display = ('name',)
     search_fields = ('name',)
 
 
-class PeregrineAdminGroup(ModelAdminGroup):
-    menu_label = 'Peregrine'
-    menu_icon = 'fa-th'
-    menu_order = 400
-    items = (CategoryAdmin,)
+modeladmin_register(CategoryAdmin)
 
 
-modeladmin_register(PeregrineAdminGroup)
-
-
-@hooks.register('after_edit_page')
-def clear_page_cache(request, page):
+@hooks.register('register_rich_text_features')
+def register_monospace_feature(features):
     """
-    This will clear Django's entire cache after a page edit. It is ugly,
-    but Django's cache mechanism doesn't currently support a way to easily
-    depending on the value of is_staff() and (if present) is_faculty.
+    Registering the `monospace` feature, which uses the `CODE` Draft.js inline style type,
+    and is stored as HTML with a `<code>` tag.
     """
+    feature_name = 'monospace'
+    draftail_type = 'CODE'
+    html_tag = 'code'
 
-    if get_clear_cache():
-        cache.clear()
+    # Configure how Draftail handles the feature in its toolbar.
+    control = {
+        'type': draftail_type,
+        'label': '{ }',
+        'description': 'Monospace',
+    }
+
+    # Call register_editor_plugin to register the configuration for Draftail.
+    features.register_editor_plugin(
+        'draftail', feature_name, InlineStyleFeature(control)
+    )
+
+    # Configure the content transform from the DB to the editor and back.
+    db_conversion = {
+        'from_database_format': {html_tag: InlineStyleElementHandler(draftail_type)},
+        'to_database_format': {'style_map': {draftail_type: html_tag}},
+    }
+
+    # Call register_converter_rule to register the content transformation conversion.
+    features.register_converter_rule('contentstate', feature_name, db_conversion)
