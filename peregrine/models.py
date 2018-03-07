@@ -38,7 +38,7 @@ class SitePage(ContentStreamPage):
         help_text='A featured image that will appear in the site theme header.',
     )
     excerpt = RichTextField(
-        features=['bold', 'italic', 'link', 'ol', 'ul'],
+        features=['bold', 'italic', 'link', 'ol', 'ul', 'monospace',],
         blank=True,
         null=True,
         help_text='An short excerpt or abstract about the content.'
