@@ -38,7 +38,7 @@ class SitePage(ContentStreamPage):
         help_text='A featured image that will appear in the site theme header.',
     )
     excerpt = RichTextField(
-        features=['bold', 'italic', 'link', 'ol', 'ul', 'monospace',],
+        features=['bold', 'italic', 'link', 'ol', 'ul', 'monospace'],
         blank=True,
         null=True,
         help_text='An short excerpt or abstract about the content.'
@@ -91,6 +91,23 @@ class SitePost(SitePage):
 
     class Meta:
         verbose_name = 'Post'
+
+
+class UserProfile(models.Model):
+    """
+    Work in progress: profiles for site users.
+    """
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.user
+
+    def save(self):
+        # Grab the gravatar as default image if one isn't set?
+        pass
 
 
 @register_setting
