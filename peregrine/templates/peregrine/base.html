@@ -1,4 +1,4 @@
-{% load staticfiles bootstrap4 peregrine wagtailsettings_tags wagtailuserbar %}
+{% load staticfiles bootstrap4 peregrine wagtailsettings_tags %}
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
@@ -30,7 +30,10 @@
         <link rel="alternate" type="application/rss+xml" title="{% settings_value 'WAGTAIL_SITE_NAME' %} - RSS" href="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'peregrine-rss' %}">
     {% endif %}
 
-    {% wagtailuserbar 'bottom-right' %}
+    {% if request.user.is_staff %}
+        {% load wagtailuserbar %}
+        {% wagtailuserbar 'bottom-right' %}
+    {% endif %}
 </head>
 {% endspaceless %}
 <body role="document" id="page-top" class="index fixed-nav">
@@ -53,12 +56,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
-		    {% block navbar-left %}{% endblock navbar-left %}
+        		    {% block navbar-left %}{% endblock navbar-left %}
                     {% top_menu_posts %}
-		    {% block navbar-center %}{% endblock navbar-center %}
+        		    {% block navbar-center %}{% endblock navbar-center %}
                     {% get_site_root as site_root %}
                     {% top_menu parent=site_root calling_page=self %}
-		    {% block navbar-right %}{% endblock navbar-right %}
+        		    {% block navbar-right %}{% endblock navbar-right %}
                 </ul>
             </div>
         </div>
