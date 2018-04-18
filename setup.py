@@ -1,8 +1,14 @@
 from setuptools import setup, find_packages
+
+with open('README.md') as f:
+    long_description = f.read()
+
 setup(
     name='wagtail-peregrine',
-    version="0.1.4",
+    version="0.1.5",
     description='Peregrine is an opinioned blog system for the Wagtail content management system on the Django Web Framework.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Tim Allen',
     author_email='tallen@wharton.upenn.edu',
     url='https://github.com/FlipperPA/peregrine',
