@@ -2,9 +2,9 @@
 
 Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https://wagtail.io) on the [Django web framework](https://www.djangoproject.com). It uses Wagtail's fantastic [StreamField feature](http://docs.wagtail.io/en/v1.13/topics/streamfield.html) to provide fully structured content body element blocks, completely separating content from the presentation layer (CSS, JS, and HTML).
 
-*This is very much pre-alpha software, in heavy active development!*
+*This is alpha software, in active development!*
 
-Peregrine will require at least Wagtail 2.0 and Django 2.0!
+Peregrine requires both Wagtail 2.0 and Django 2.0.
 
 ## Getting Started: the Five Minute Install
 
