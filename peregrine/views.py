@@ -19,12 +19,17 @@ class PostsListView(ListView):
 
     def get(self, request, *args, **kwargs):
         peregrine_settings = PeregrineSettings.for_site(request.site)
-        if peregrine_settings.landing_page is None:
-            # Render list of recent posts
+
+        if peregrine_settings.landing_page is None or 'name' in kwargs:
+            # If a landing page hasn't been set, or 'name' is in kwargs
+            # because we're on an author or category page:
+            # render list of recent posts
             response = super().get(request, *args, **kwargs)
             return response
         else:
-            # Render landing page
+            # There's a landing page set in settings, and no 'name'
+            # in kwargs, so we are on the home page:
+            # Render the user selected landing page
             return serve(request, peregrine_settings.landing_page.url)
 
     def get_paginate_by(self, queryset):
