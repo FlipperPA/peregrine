@@ -8,7 +8,7 @@ Peregrine will require at least Wagtail 2.0 and Django 2.0!
 
 ## Getting Started: the Five Minute Install
 
-There instructions will be fleshed out, but if you want to give it a try, here are the basics.
+These instructions will be fleshed out, but if you want to give it a try, here are the basics.
 
 ### System
 
