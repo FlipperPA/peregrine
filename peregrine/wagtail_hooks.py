@@ -27,5 +27,5 @@ def delete_old_revisions(request, page):
     peregrine_settings = PeregrineSettings.for_site(request.site)
 
     if peregrine_settings.revisions_to_keep is not None:
-        pks_to_delete = page.revisions.order_by('-created_at')[revisions_to_keep:].values_list('id', flat=True)
+        pks_to_delete = page.revisions.order_by('-created_at')[peregrine_settings.revisions_to_keep:].values_list('id', flat=True)
         page.revisions.filter(pk__in=pks_to_delete).delete()
