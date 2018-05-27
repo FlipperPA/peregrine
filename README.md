@@ -117,6 +117,12 @@ python manage.py runserver 0:8000
 
 You should then be able to navigate to http://localhost:8000/cms/ and log in, and start creating!
 
+## Release Notes
+
+### 0.2.0
+
+* Add new setting to only keep recent revisions. If not set, will keep all revisions.
+
 ## Maintainer
 
 * Timothy Allen (https://github.com/FlipperPA/)
