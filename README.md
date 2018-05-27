@@ -109,17 +109,20 @@ After you've set up your settings, we need to create your database and a superus
 
 ```shell
 python manage.py migrate
-python manage.py peregrine_initial_site  # Be sure to see the note above before running this. It isn't necessary if you don't want to.
+# ** Be sure to see the note above before running this next command. It isn't necessary if you don't want to. **
+python manage.py peregrine_initial_site
 python manage.py createsuperuser
 python manage.py runserver 0:8000
 ```
 
 You should then be able to navigate to http://localhost:8000/cms/ and log in, and start creating!
 
+## Maintainer
+
+* Timothy Allen (https://github.com/FlipperPA/)
 
 ## Contributors
 
-* Timothy Allen (https://github.com/FlipperPA/)
 * Jon Banafato (https://github.com/jonafato/)
 * Rana Fayez (https://github.com/meetRanaFayez/)
 * Jeff Triplett (https://github.com/jefftriplett/)
