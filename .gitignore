@@ -1,11 +1,15 @@
-/media
+# manage.py, always default to dev settings
+manage.py
+
+# Django media files
+media/*
 
 # Python bytecode:
 *.py[co]
 
 # Packaging files:
 *.egg*
-/dist
+dist/*
 
 # Sphinx docs:
 build
@@ -44,7 +48,7 @@ Desktop.ini
 .vagrant
 
 # Ignore local configurations
-config/settings/local.py
+wrds/settings/local.py
 db.sqlite3
 
 # Node modules
@@ -56,8 +60,3 @@ bower_components/
 # Coverage
 htmlcov/
 .coverage
-
-# dumpdata file
-db.json
-/static
-/config/settings/user.py
