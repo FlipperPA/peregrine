@@ -2,7 +2,7 @@ from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register
 )
 
-from .models import Category
+from .models import Category, PeregrineSettings
 
 
 class CategoryAdmin(ModelAdmin):
@@ -20,12 +20,13 @@ modeladmin_register(CategoryAdmin)
 @hooks.register('after_edit_page')
 def delete_old_revisions(request, page):
     """
-    This will clear Django's entire cache after a page edit. It is ugly,
-    but Django's cache mechanism doesn't currently support a way to easily
-    depending on the value of is_staff() and (if present) is_faculty.
+    This will only keep Wagtail's most recent revisions to a page when it
+    is saved, as set in settings. Defaults to None, which saves all
+    revisions.
     """
 
-    revisions_to_keep = revisions_to_keep()
-    if revisions_to_keep is not None:
+    peregrine_settings = PeregrineSettings.for_site(request.site)
+
+    if peregrine_settings.revisions_to_keep is not None:
         pks_to_delete = page.revisions.order_by('-created_at')[revisions_to_keep:].values_list('id', flat=True)
         page.revisions.filter(pk__in=pks_to_delete).delete()
