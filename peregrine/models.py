@@ -122,6 +122,12 @@ class PeregrineSettings(BaseSetting):
         default=100,
         help_text='The number of posts to include in the RSS feed.',
     )
+    revisions_to_keep = models.IntegerField(
+        default=None,
+        blank=True,
+        null=True,
+        help_text='The number of revisions to keep. If None, keeps all revisions.',
+    )
 
     class Meta:
         verbose_name = "Peregrine Settings"
