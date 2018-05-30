@@ -119,6 +119,10 @@ You should then be able to navigate to http://localhost:8000/cms/ and log in, an
 
 ## Release Notes
 
+### 0.2.1
+
+* Add a `VACUUM` command if running SQLite on S3 as the default database engine to keep the SQLite DB size as small as possible.
+
 ### 0.2.0
 
 * Add new setting to only keep recent revisions. If not set, will keep all revisions.
