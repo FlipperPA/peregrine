@@ -26,15 +26,16 @@ def top_menu(context, parent, calling_page=None):
     The has_menu_children method is necessary because the bootstrap menu requires
     a dropdown class to be applied to a parent
     """
+
+    # Select any Page type other than SitePosts for menu inclusion.
     menu_items = parent.get_children().filter(
         live=True,
         show_in_menus=True,
-        content_type__model='sitepage',
+    ).exclude(
+        content_type__model='sitepost',
     )
-    # from pprint import pprint
+
     for menu_item in menu_items:
-    #    pprint(dir(menu_item))
-    #    print(menu_item.content_type)
         menu_item.show_dropdown = has_menu_children(menu_item)
     return {
         'calling_page': calling_page,
