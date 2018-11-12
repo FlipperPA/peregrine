@@ -4,7 +4,7 @@ Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https
 
 *This is alpha software, in active development!*
 
-Peregrine requires both Wagtail 2.0 and Django 2.0.
+Peregrine requires at least Wagtail 2.0 and Django 2.0.
 
 ## Getting Started: the Five Minute Install
 
@@ -14,7 +14,7 @@ These instructions will be fleshed out, but if you want to give it a try, here a
 
 ```shell
 mkvirtualenv my_blog
-pip install wagtail-peregrine
+pip install peregrine
 django-admin startproject my_blog
 cd my_blog
 ```
