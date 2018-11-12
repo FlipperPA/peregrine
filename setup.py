@@ -4,8 +4,8 @@ with open('README.md') as f:
     long_description = f.read()
 
 setup(
-    name='wagtail-peregrine',
-    version="0.2.2",
+    name='peregrine',
+    version="0.2.3",
     description='Peregrine is an opinioned blog system for the Wagtail content management system on the Django Web Framework.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -18,7 +18,7 @@ setup(
     install_requires=[
         'wagtail>=2.0',
         'wagtailcontentstream>=0.4.0',
-        'django-bootstrap4>=0.0.6',
+        'django-bootstrap4>=0.0.7',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
