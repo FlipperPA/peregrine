@@ -1,5 +1,9 @@
 # Peregrine
 
+**Peregrine will be joining forced with CodeRedCMS. We have similar philosophies: a plug and play system on top of Wagtail using Bootstrap 4. It doesn't make sense to duplicate our efforts.**
+
+**Please see [CodeRedCMS here](https://github.com/coderedcorp/coderedcms).**
+
 Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https://wagtail.io) on the [Django web framework](https://www.djangoproject.com). It uses Wagtail's fantastic [StreamField feature](http://docs.wagtail.io/en/v1.13/topics/streamfield.html) to provide fully structured content body element blocks, completely separating content from the presentation layer (CSS, JS, and HTML).
 
 *This is alpha software, in active development!*
