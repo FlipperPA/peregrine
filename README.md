@@ -1,6 +1,6 @@
 # Peregrine
 
-**Peregrine will be joining forced with CodeRedCMS. We have similar philosophies: a plug and play system on top of Wagtail using Bootstrap 4. It doesn't make sense to duplicate our efforts.**
+**Peregrine will be joining forces with CodeRedCMS. We have similar philosophies: a plug and play system on top of Wagtail using Bootstrap 4. It doesn't make sense to duplicate our efforts.**
 
 **Please see [CodeRedCMS here](https://github.com/coderedcorp/coderedcms).**
 
