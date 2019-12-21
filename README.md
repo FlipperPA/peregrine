@@ -138,5 +138,5 @@ You should then be able to navigate to http://localhost:8000/cms/ and log in, an
 ## Contributors
 
 * Jon Banafato (https://github.com/jonafato/)
-* Rana Fayez (https://github.com/meetRanaFayez/)
+* Rana Fayez (https://github.com/Tagine/)
 * Jeff Triplett (https://github.com/jefftriplett/)
