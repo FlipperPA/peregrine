@@ -1,7 +1,7 @@
 {% extends 'peregrine/base.html' %}
-{% load wagtailimages_tags wagtailsettings_tags %}
+{% load wagtailimages_tags peregrine %}
 
-{% block site_title %}{{ page.title }}: {% settings_value 'WAGTAIL_SITE_NAME' %}{% endblock site_title %}
+{% block site_title %}{{ page.title }} - {% settings_value 'WAGTAIL_SITE_NAME' %}{% endblock site_title %}
 
 {% block content %}
     {% block page_header %}
