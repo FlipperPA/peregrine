@@ -8,13 +8,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="{% settings_value 'WAGTAIL_SITE_DESCRIPTION' %}">
 
     {# <link rel="icon" href="{% static "favicon.ico" %}"> #}
     <title>{% block site_title %}{% settings_value 'WAGTAIL_SITE_NAME' %}{% endblock site_title %}</title>
     {% block extra_head_top %}
     {% endblock extra_head_top %}
+
+    {% block head_meta %}
+        <meta property="og:title" content="{% settings_value 'WAGTAIL_SITE_NAME' %}">
+        <meta property="og:description" content="{% settings_value 'WAGTAIL_SITE_DESCRIPTION' %}">
+
+        {% settings_value 'WAGTAIL_SITE_URL' as url_exists %}
+        {% if url_exists %}
+            <meta property="og:url" content="{% settings_value 'WAGTAIL_SITE_URL' %}">
+        {% endif %}
+
+        {% settings_value 'WAGTAIL_SITE_IMAGE' as image_exists %}
+        {% if image_exists %}
+            <meta property="og:image" content="{% settings_value 'WAGTAIL_SITE_IMAGE' %}">
+            <meta name="twitter:card" content="summary_large_image">
+        {% else %}
+            <meta name="twitter:card" content="summary">
+        {% endif %}
+    {% endblock head_meta %}    
 
     {% block head_js %}
     {% endblock head_js %}

@@ -3,6 +3,24 @@
 
 {% block site_title %}{{ page.title }} - {% settings_value 'WAGTAIL_SITE_NAME' %}{% endblock site_title %}
 
+{% block head_meta %}
+    <meta property="og:title" content="{{ page.title }} - {% settings_value 'WAGTAIL_SITE_NAME' %}">
+    <meta property="og:description" content="{{ page.excerpt|safe }}">
+
+    {% settings_value 'WAGTAIL_SITE_URL' as url_exists %}
+    {% if url_exists %}
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    {% endif %}
+
+    {% if page.header_image %}
+        {% image page.header_image original as header_image %}
+        <meta property="og:image" content="{{ header_image }}">
+        <meta name="twitter:card" content="summary_large_image">
+    {% else %}
+        <meta name="twitter:card" content="summary">
+    {% endif %}
+{% endblock head_meta %}
+
 {% block content %}
     {% block page_header %}
         {% if page.header_image %}
