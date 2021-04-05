@@ -14,7 +14,9 @@
 
     {% if page.header_image %}
         {% image page.header_image original as header_image %}
-        <meta property="og:image" content="{{ header_image }}">
+
+        {# The ugly if statement below handles relative URLs #}
+        <meta property="og:image" content="{% if header_image.url|slice:'0:4' != 'http' %}{{ request.scheme }}://{{ request.META.HTTP_HOST }}{% endif %}{{ header_image.url }}">
         <meta name="twitter:card" content="summary_large_image">
     {% else %}
         <meta name="twitter:card" content="summary">
