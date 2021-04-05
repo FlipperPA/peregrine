@@ -5,7 +5,6 @@ with open('README.md') as f:
 
 setup(
     name='peregrine',
-    version="0.2.6",
     description='Peregrine is an opinioned blog system for the Wagtail content management system on the Django Web Framework.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -15,6 +14,8 @@ setup(
     include_package_data=True,
     packages=find_packages(),
     zip_safe=False,
+    setup_requires=["setuptools_scm"],
+    use_scm_version=True,
     install_requires=[
         'wagtail>=2.0',
         'wagtailcontentstream>=0.4.0',
