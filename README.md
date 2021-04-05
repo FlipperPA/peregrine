@@ -62,8 +62,10 @@ PEREGRINE_MIDDLEWARE = [
 
 MIDDLEWARE += PEREGRINE_MIDDLEWARE
 
-WAGTAIL_SITE_NAME = 'My Blog'
-
+# WAGTAIL_SITE_NAME is used by Wagtail; others are used by OpenGraph.
+WAGTAIL_SITE_NAME = "PyPhilly: Home of Tim Allen, aka FlipperPA"
+WAGTAIL_SITE_DESCRIPTION = "PyPhilly is the website of Tim Allen, a web developer living in Philadelphia. Tim has a wide range of interests, but mostly writes about Python, Django, and virtual reality."
+WAGTAIL_SITE_URL = "https://PyPhilly.org/"
 
 TEMPLATES = [
     {
