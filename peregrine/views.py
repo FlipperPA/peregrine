@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.views.generic import ListView
 
+from wagtail.core.models import Site
 from wagtail.core.views import serve
 
 from .models import SitePost, PeregrineSettings
@@ -18,7 +19,7 @@ class PostsListView(ListView):
         return SitePost.objects.live().order_by('-post_date')
 
     def get(self, request, *args, **kwargs):
-        peregrine_settings = PeregrineSettings.for_site(request.site)
+        peregrine_settings = PeregrineSettings.for_site(Site.find_for_request(request))
 
         if peregrine_settings.landing_page is None or 'name' in kwargs:
             # If a landing page hasn't been set, or 'name' is in kwargs
@@ -33,7 +34,7 @@ class PostsListView(ListView):
             return serve(request, peregrine_settings.landing_page.url)
 
     def get_paginate_by(self, queryset):
-        peregrine_settings = PeregrineSettings.for_site(self.request.site)
+        peregrine_settings = PeregrineSettings.for_site(Site.find_for_request(self.request))
 
         return peregrine_settings.post_number
 
@@ -81,7 +82,7 @@ class PostsFeed(Feed):
     )
 
     def get_object(self, request, *args, **kwargs):
-        kwargs['count'] = PeregrineSettings.for_site(request.site).post_number_rss
+        kwargs['count'] = PeregrineSettings.for_site(Site.find_for_request(request.site)).post_number_rss
         return kwargs['count']
 
     def items(self, count):

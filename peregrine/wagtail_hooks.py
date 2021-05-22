@@ -3,6 +3,7 @@ from django.db import connection
 
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from wagtail.core import hooks
+from wagtail.core.models import Site
 
 from .models import Category, PeregrineSettings
 
@@ -27,7 +28,7 @@ def delete_old_revisions(request, page):
     revisions.
     """
 
-    peregrine_settings = PeregrineSettings.for_site(request.site)
+    peregrine_settings = PeregrineSettings.for_site(Site.find_for_request(request))
 
     if peregrine_settings.revisions_to_keep is not None:
         pks_to_delete = page.revisions.order_by('-created_at')[peregrine_settings.revisions_to_keep:].values_list('id', flat=True)
