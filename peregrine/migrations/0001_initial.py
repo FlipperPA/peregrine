@@ -20,58 +20,193 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0040_page_draft_title'),
-        ('wagtailimages', '0019_delete_filter'),
+        ("wagtailcore", "0040_page_draft_title"),
+        ("wagtailimages", "0019_delete_filter"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
             options={
-                'verbose_name_plural': 'categories',
+                "verbose_name_plural": "categories",
             },
         ),
         migrations.CreateModel(
-            name='SitePage',
+            name="SitePage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.core.fields.StreamField((('heading', wagtail.core.blocks.TextBlock(icon='title', template='wagtailcontentstream/blocks/heading.html')), ('paragraph', wagtail.core.blocks.RichTextBlock(features=['bold', 'italic', 'link', 'ol', 'ul'], icon='pilcrow')), ('image', wagtail.core.blocks.StructBlock((('image', wagtail.images.blocks.ImageChooserBlock()), ('caption', wagtail.core.blocks.TextBlock(required=False))))), ('document', wagtail.documents.blocks.DocumentChooserBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock(icon='media')), ('table', wagtail.contrib.table_block.blocks.TableBlock(icon='table')), ('code', wagtail.core.blocks.StructBlock((('language', wagtail.core.blocks.ChoiceBlock(choices=[('bash', 'Bash/Shell'), ('css', 'CSS'), ('diff', 'diff'), ('http', 'HTML'), ('javascript', 'Javascript'), ('json', 'JSON'), ('python', 'Python'), ('scss', 'SCSS'), ('yaml', 'YAML')], help_text='Coding language', label='Language')), ('code', wagtail.core.blocks.TextBlock(label='Code'))), icon='code'))), blank=True)),
-                ('excerpt', wagtail.core.fields.RichTextField(blank=True, help_text='An short excerpt or abstract about the content.', null=True)),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.Page",
+                    ),
+                ),
+                (
+                    "body",
+                    wagtail.core.fields.StreamField(
+                        (
+                            (
+                                "heading",
+                                wagtail.core.blocks.TextBlock(
+                                    icon="title",
+                                    template="wagtailcontentstream/blocks/heading.html",
+                                ),
+                            ),
+                            (
+                                "paragraph",
+                                wagtail.core.blocks.RichTextBlock(
+                                    features=["bold", "italic", "link", "ol", "ul"],
+                                    icon="pilcrow",
+                                ),
+                            ),
+                            (
+                                "image",
+                                wagtail.core.blocks.StructBlock(
+                                    (
+                                        (
+                                            "image",
+                                            wagtail.images.blocks.ImageChooserBlock(),
+                                        ),
+                                        (
+                                            "caption",
+                                            wagtail.core.blocks.TextBlock(
+                                                required=False
+                                            ),
+                                        ),
+                                    )
+                                ),
+                            ),
+                            (
+                                "document",
+                                wagtail.documents.blocks.DocumentChooserBlock(),
+                            ),
+                            ("embed", wagtail.embeds.blocks.EmbedBlock(icon="media")),
+                            (
+                                "table",
+                                wagtail.contrib.table_block.blocks.TableBlock(
+                                    icon="table"
+                                ),
+                            ),
+                            (
+                                "code",
+                                wagtail.core.blocks.StructBlock(
+                                    (
+                                        (
+                                            "language",
+                                            wagtail.core.blocks.ChoiceBlock(
+                                                choices=[
+                                                    ("bash", "Bash/Shell"),
+                                                    ("css", "CSS"),
+                                                    ("diff", "diff"),
+                                                    ("http", "HTML"),
+                                                    ("javascript", "Javascript"),
+                                                    ("json", "JSON"),
+                                                    ("python", "Python"),
+                                                    ("scss", "SCSS"),
+                                                    ("yaml", "YAML"),
+                                                ],
+                                                help_text="Coding language",
+                                                label="Language",
+                                            ),
+                                        ),
+                                        (
+                                            "code",
+                                            wagtail.core.blocks.TextBlock(label="Code"),
+                                        ),
+                                    ),
+                                    icon="code",
+                                ),
+                            ),
+                        ),
+                        blank=True,
+                    ),
+                ),
+                (
+                    "excerpt",
+                    wagtail.core.fields.RichTextField(
+                        blank=True,
+                        help_text="An short excerpt or abstract about the content.",
+                        null=True,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Page',
+                "verbose_name": "Page",
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='SitePost',
+            name="SitePost",
             fields=[
-                ('sitepage_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='peregrine.SitePage')),
-                ('post_date', models.DateTimeField(default=django.utils.timezone.now, help_text='The date and time of the post.')),
+                (
+                    "sitepage_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="peregrine.SitePage",
+                    ),
+                ),
+                (
+                    "post_date",
+                    models.DateTimeField(
+                        default=django.utils.timezone.now,
+                        help_text="The date and time of the post.",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Post',
+                "verbose_name": "Post",
             },
-            bases=('peregrine.sitepage',),
+            bases=("peregrine.sitepage",),
         ),
         migrations.AddField(
-            model_name='sitepage',
-            name='categories',
-            field=modelcluster.fields.ParentalManyToManyField(blank=True, help_text='The categories for the page or post.', to='peregrine.Category'),
+            model_name="sitepage",
+            name="categories",
+            field=modelcluster.fields.ParentalManyToManyField(
+                blank=True,
+                help_text="The categories for the page or post.",
+                to="peregrine.Category",
+            ),
         ),
         migrations.AddField(
-            model_name='sitepage',
-            name='header_image',
-            field=models.ForeignKey(blank=True, help_text='A featured image that will appear in the site theme header.', null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image'),
+            model_name="sitepage",
+            name="header_image",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="A featured image that will appear in the site theme header.",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailimages.Image",
+            ),
         ),
         migrations.AddField(
-            model_name='sitepost',
-            name='authors',
-            field=modelcluster.fields.ParentalManyToManyField(blank=True, help_text='The authors of the post.', to=settings.AUTH_USER_MODEL),
+            model_name="sitepost",
+            name="authors",
+            field=modelcluster.fields.ParentalManyToManyField(
+                blank=True,
+                help_text="The authors of the post.",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

@@ -7,28 +7,44 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('peregrine', '0005_auto_20180418_1637'),
+        ("peregrine", "0005_auto_20180418_1637"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='peregrinesettings',
-            name='landing_page',
-            field=models.ForeignKey(blank=True, help_text='The front page for Peregrine to display. If blank, displays the latest posts.', null=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page'),
+            model_name="peregrinesettings",
+            name="landing_page",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="The front page for Peregrine to display. If blank, displays the latest posts.",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="wagtailcore.Page",
+            ),
         ),
         migrations.AlterField(
-            model_name='peregrinesettings',
-            name='post_number',
-            field=models.IntegerField(default=10, help_text='The number of posts to display on the posts page.'),
+            model_name="peregrinesettings",
+            name="post_number",
+            field=models.IntegerField(
+                default=10,
+                help_text="The number of posts to display on the posts page.",
+            ),
         ),
         migrations.AlterField(
-            model_name='peregrinesettings',
-            name='post_number_nav',
-            field=models.IntegerField(default=10, help_text='The number of posts to display in top navigation dropdown.'),
+            model_name="peregrinesettings",
+            name="post_number_nav",
+            field=models.IntegerField(
+                default=10,
+                help_text="The number of posts to display in top navigation dropdown.",
+            ),
         ),
         migrations.AlterField(
-            model_name='peregrinesettings',
-            name='post_title',
-            field=models.CharField(default='Posts', help_text='The top navigation menu dropdown text label for latest posts.', max_length=30),
+            model_name="peregrinesettings",
+            name="post_title",
+            field=models.CharField(
+                default="Posts",
+                help_text="The top navigation menu dropdown text label for latest posts.",
+                max_length=30,
+            ),
         ),
     ]

@@ -1,3 +1,3 @@
 APPS = [
-    'wagtail.contrib.settings',
+    "wagtail.contrib.settings",
 ]

@@ -19,10 +19,11 @@ class Category(models.Model):
     Categories which a Page or Post item can belong to. A page can belong to
     many categories.
     """
+
     name = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = "categories"
 
     def __str__(self):
         return self.name
@@ -30,67 +31,67 @@ class Category(models.Model):
 
 class SitePage(ContentStreamPage):
     header_image = models.ForeignKey(
-        'wagtailimages.Image',
+        "wagtailimages.Image",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+',
-        help_text='A featured image that will appear in the site theme header.',
+        related_name="+",
+        help_text="A featured image that will appear in the site theme header.",
     )
     excerpt = RichTextField(
-        features=['bold', 'italic', 'link', 'ol', 'ul', 'monospace'],
+        features=["bold", "italic", "link", "ol", "ul", "monospace"],
         blank=True,
         null=True,
-        help_text='An short excerpt or abstract about the content.'
+        help_text="An short excerpt or abstract about the content.",
     )
     categories = ParentalManyToManyField(
-        'Category',
+        "Category",
         blank=True,
-        help_text='The categories for the page or post.',
+        help_text="The categories for the page or post.",
     )
     show_in_menus_default = True
 
     search_fields = ContentStreamPage.search_fields + [
-        index.SearchField('body'),
-        index.SearchField('excerpt'),
+        index.SearchField("body"),
+        index.SearchField("excerpt"),
     ]
 
     content_panels = [
-        FieldPanel('title'),
-        ImageChooserPanel('header_image'),
-        FieldPanel('excerpt'),
-        FieldPanel('categories', widget=CheckboxSelectMultiple),
-        StreamFieldPanel('body'),
+        FieldPanel("title"),
+        ImageChooserPanel("header_image"),
+        FieldPanel("excerpt"),
+        FieldPanel("categories", widget=CheckboxSelectMultiple),
+        StreamFieldPanel("body"),
     ]
 
     class Meta:
-        verbose_name = 'Page'
+        verbose_name = "Page"
 
 
 class SitePost(SitePage):
     post_date = models.DateTimeField(
         default=now,
-        help_text='The date and time of the post.',
+        help_text="The date and time of the post.",
     )
     authors = ParentalManyToManyField(
         settings.AUTH_USER_MODEL,
         blank=True,
-        help_text='The authors of the post.',
+        help_text="The authors of the post.",
     )
     show_in_menus_default = True
 
     content_panels = [
-        FieldPanel('title'),
-        FieldPanel('post_date'),
-        FieldPanel('authors'),
-        ImageChooserPanel('header_image'),
-        FieldPanel('excerpt'),
-        FieldPanel('categories', widget=CheckboxSelectMultiple),
-        StreamFieldPanel('body'),
+        FieldPanel("title"),
+        FieldPanel("post_date"),
+        FieldPanel("authors"),
+        ImageChooserPanel("header_image"),
+        FieldPanel("excerpt"),
+        FieldPanel("categories", widget=CheckboxSelectMultiple),
+        StreamFieldPanel("body"),
     ]
 
     class Meta:
-        verbose_name = 'Post'
+        verbose_name = "Post"
 
 
 @register_setting
@@ -98,35 +99,36 @@ class PeregrineSettings(BaseSetting):
     """
     Settings for the user to customize their Peregrine blog.
     """
+
     landing_page = models.ForeignKey(
-        'wagtailcore.Page',
+        "wagtailcore.Page",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        help_text='The front page for Peregrine to display. If blank, displays the latest posts.'
+        help_text="The front page for Peregrine to display. If blank, displays the latest posts.",
     )
     post_title = models.CharField(
         max_length=30,
         default="Posts",
-        help_text='The top navigation menu dropdown text label for latest posts.',
+        help_text="The top navigation menu dropdown text label for latest posts.",
     )
     post_number = models.IntegerField(
         default=10,
-        help_text='The number of posts to display on the posts page.',
+        help_text="The number of posts to display on the posts page.",
     )
     post_number_nav = models.IntegerField(
         default=10,
-        help_text='The number of posts to display in top navigation dropdown.',
+        help_text="The number of posts to display in top navigation dropdown.",
     )
     post_number_rss = models.IntegerField(
         default=100,
-        help_text='The number of posts to include in the RSS feed.',
+        help_text="The number of posts to include in the RSS feed.",
     )
     revisions_to_keep = models.IntegerField(
         default=None,
         blank=True,
         null=True,
-        help_text='The number of revisions to keep. If None, keeps all revisions.',
+        help_text="The number of revisions to keep. If None, keeps all revisions.",
     )
 
     class Meta:

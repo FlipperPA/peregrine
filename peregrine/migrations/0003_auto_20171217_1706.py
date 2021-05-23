@@ -7,18 +7,26 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('peregrine', '0002_auto_20171216_1408'),
+        ("peregrine", "0002_auto_20171216_1408"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='peregrinesettings',
-            name='post_number_rss',
-            field=models.IntegerField(default=100, help_text='The number of posts to include in the RSS feed.'),
+            model_name="peregrinesettings",
+            name="post_number_rss",
+            field=models.IntegerField(
+                default=100, help_text="The number of posts to include in the RSS feed."
+            ),
         ),
         migrations.AlterField(
-            model_name='peregrinesettings',
-            name='landing_page',
-            field=models.ForeignKey(blank=True, help_text='The page to display at the root. If blank, displays the latest posts.', null=True, on_delete=django.db.models.deletion.SET_NULL, to='wagtailcore.Page'),
+            model_name="peregrinesettings",
+            name="landing_page",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="The page to display at the root. If blank, displays the latest posts.",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="wagtailcore.Page",
+            ),
         ),
     ]
