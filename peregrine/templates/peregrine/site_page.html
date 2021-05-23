@@ -5,7 +5,7 @@
 
 {% block head_meta %}
     <meta property="og:title" content="{{ page.title }} - {% settings_value 'WAGTAIL_SITE_NAME' %}">
-    <meta property="og:description" content="{{ page.excerpt|safe }}">
+    <meta property="og:description" content="{{ page.excerpt|striptags|safe }}">
 
     {% settings_value 'WAGTAIL_SITE_URL' as url_exists %}
     {% if url_exists %}
