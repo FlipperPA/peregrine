@@ -29,26 +29,30 @@ INSTALLED_APPS = [
 ]
 
 PEREGRINE_APPS = [
-    'peregrine',
-    'bootstrap4',
-    'wagtailcodeblock',
-    'wagtailcontentstream',
-    'taggit',
-    'modelcluster',
+    "peregrine",
+    "bootstrap4",
+    "wagtailcodeblock",
+    "wagtailcontentstream",
 
-    'wagtail.core',
-    'wagtail.admin',
-    'wagtail.documents',
-    'wagtail.snippets',
-    'wagtail.users',
-    'wagtail.images',
-    'wagtail.embeds',
-    'wagtail.search',
-    'wagtail.sites',
-    'wagtail.contrib.settings',
-    'wagtail.contrib.modeladmin',
-    'wagtail.contrib.table_block',
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
+    "taggit",
+    "modelcluster",
+
+    "wagtail.contrib.settings",
+    "wagtail.contrib.modeladmin",
+    "wagtail.contrib.table_block",
 ]
+
 
 INSTALLED_APPS += PEREGRINE_APPS
 
@@ -57,13 +61,13 @@ MIDDLEWARE = [
 ]
 
 PEREGRINE_MIDDLEWARE = [
-    'wagtail.core.middleware.SiteMiddleware',
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 MIDDLEWARE += PEREGRINE_MIDDLEWARE
 
 # WAGTAIL_SITE_NAME is used by Wagtail; others are used by OpenGraph.
-WAGTAIL_SITE_NAME = "PyPhilly: Home of Tim Allen, aka FlipperPA"
+WAGTAIL_SITE_NAME = "PyPhilly: Home of FlipperPA"
 WAGTAIL_SITE_DESCRIPTION = "PyPhilly is the website of Tim Allen, a web developer living in Philadelphia. Tim has a wide range of interests, but mostly writes about Python, Django, and virtual reality."
 WAGTAIL_SITE_URL = "https://PyPhilly.org/"
 
@@ -126,5 +130,6 @@ You should then be able to navigate to http://localhost:8000/cms/ and log in, an
 ## Contributors
 
 * Jon Banafato (https://github.com/jonafato/)
+* Dave Bauer (https://github.com/tdxdave)
 * Rana Fayez (https://github.com/Tagine/)
 * Jeff Triplett (https://github.com/jefftriplett/)
