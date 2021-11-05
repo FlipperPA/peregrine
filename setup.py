@@ -5,7 +5,8 @@ with open("README.md") as f:
 
 setup(
     name="peregrine",
-    description="Peregrine is an opinioned blog system for the Wagtail content management system on the Django Web Framework.",
+    description="Peregrine is an opinioned blog system for the Wagtail content "
+    "management system on the Django Web Framework.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Tim Allen",
@@ -31,9 +32,14 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
         "Framework :: Django",
-        "Framework :: Django :: 2.0",
+        "Framework :: Django :: 2.2",
+        "Framework :: Django :: 3.0",
+        "Framework :: Django :: 3.1",
+        "Framework :: Django :: 3.2",
+        "Framework :: Django :: 4.0",
         "Framework :: Wagtail",
         "Framework :: Wagtail :: 2",
         "Topic :: Internet :: WWW/HTTP",
