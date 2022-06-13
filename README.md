@@ -1,10 +1,10 @@
 # Peregrine
 
-Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https://wagtail.io) on the [Django web framework](https://www.djangoproject.com). It uses Wagtail's fantastic [StreamField feature](http://docs.wagtail.io/en/v1.13/topics/streamfield.html) to provide fully structured content body element blocks, completely separating content from the presentation layer (CSS, JS, and HTML).
+Peregrine is an opinionated blogging platform which uses [the Wagtail CMS](https://wagtail.io) on the [Django web framework](https://www.djangoproject.com) and is geared for coding blogs. It uses Wagtail's fantastic [StreamField feature](http://docs.wagtail.io/en/v1.13/topics/streamfield.html) to provide fully structured content body element blocks, completely separating content from the presentation layer (CSS, JS, and HTML).
 
-Peregrine requires at least Wagtail 2.0 and Django 2.0.
+It uses [Wagtail Code Block](https://github.com/FlipperPA/wagtailcodeblock) with [PrismJS](https://prismjs.com/) syntax highlighting under the hood for beautiful code snippets. You can see this in action at [PyPhilly.org](https://pyphilly.org/open-source-projects/getting-started-five-minute-install/).
 
-**Are you looking for a more robust system, for example, creating a marketing site? The maintainer of Peregrine also contributes to [CodeRedCMS](https://github.com/coderedcorp/coderedcms), which offers a lot more bells and whistles. Peregrine will remain a basic blogging system.**
+**Are you looking for a more robust system, for example, creating a marketing site? The maintainer of Peregrine also contributes to [CodeRedCMS](https://github.com/coderedcorp/coderedcms), which offers a lot more bells and whistles. Peregrine will remain a basic weblog solutions focused on features to display code.**
 
 ## Getting Started: the Five Minute Install
 
