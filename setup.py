@@ -18,8 +18,9 @@ setup(
     setup_requires=["setuptools_scm"],
     use_scm_version=True,
     install_requires=[
-        "wagtail>=2.15",
+        "wagtail>=2.15,<3.0",
         "wagtailcontentstream>=0.4.0",
+        "wagtailcodeblock<=1.28.0"
         "django-bootstrap4>=2",
     ],
     classifiers=[
