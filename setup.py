@@ -18,7 +18,7 @@ setup(
     setup_requires=["setuptools_scm"],
     use_scm_version=True,
     install_requires=[
-        "wagtail>=2.15,<3.0",
+        "wagtail>=3.0.1,<3.1",
         "wagtailcontentstream>=0.4.0",
         "wagtailcodeblock<=1.28.0"
         "django-bootstrap4>=2",
@@ -37,8 +37,6 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
         "Framework :: Django",
         "Framework :: Django :: 2.2",
-        "Framework :: Django :: 3.0",
-        "Framework :: Django :: 3.1",
         "Framework :: Django :: 3.2",
         "Framework :: Django :: 4.0",
         "Framework :: Wagtail",
