@@ -20,7 +20,7 @@ setup(
     install_requires=[
         "wagtail>=3.0.1,<3.1",
         "wagtailcontentstream>=0.4.0",
-        "wagtailcodeblock<=1.28.0"
+        "wagtailcodeblock<=1.28.0",
         "django-bootstrap4>=2",
     ],
     classifiers=[
