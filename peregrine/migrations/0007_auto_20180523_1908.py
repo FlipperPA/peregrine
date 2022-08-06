@@ -2,8 +2,8 @@
 
 from django.db import migrations
 import wagtail.contrib.table_block.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.documents.blocks
 import wagtail.embeds.blocks
 import wagtail.images.blocks
@@ -19,18 +19,18 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="sitepage",
             name="body",
-            field=wagtail.core.fields.StreamField(
+            field=wagtail.fields.StreamField(
                 [
                     (
                         "heading",
-                        wagtail.core.blocks.TextBlock(
+                        wagtail.blocks.TextBlock(
                             icon="title",
                             template="wagtailcontentstream/blocks/heading.html",
                         ),
                     ),
                     (
                         "paragraph",
-                        wagtail.core.blocks.RichTextBlock(
+                        wagtail.blocks.RichTextBlock(
                             features=[
                                 "bold",
                                 "italic",
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "image",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "image",
@@ -54,21 +54,21 @@ class Migration(migrations.Migration):
                                 ),
                                 (
                                     "caption",
-                                    wagtail.core.blocks.TextBlock(
+                                    wagtail.blocks.TextBlock(
                                         help_text="The caption will appear under the image, if entered.",
                                         required=False,
                                     ),
                                 ),
                                 (
                                     "credit",
-                                    wagtail.core.blocks.TextBlock(
+                                    wagtail.blocks.TextBlock(
                                         help_text="The credit will appear under the image, if entered.",
                                         required=False,
                                     ),
                                 ),
                                 (
                                     "align",
-                                    wagtail.core.blocks.ChoiceBlock(
+                                    wagtail.blocks.ChoiceBlock(
                                         choices=[
                                             ("left", "Left"),
                                             ("right", "Right"),
@@ -89,11 +89,11 @@ class Migration(migrations.Migration):
                     ),
                     (
                         "code",
-                        wagtail.core.blocks.StructBlock(
+                        wagtail.blocks.StructBlock(
                             [
                                 (
                                     "language",
-                                    wagtail.core.blocks.ChoiceBlock(
+                                    wagtail.blocks.ChoiceBlock(
                                         choices=[
                                             ("bash", "Bash/Shell"),
                                             ("css", "CSS"),
@@ -109,7 +109,7 @@ class Migration(migrations.Migration):
                                         label="Language",
                                     ),
                                 ),
-                                ("code", wagtail.core.blocks.TextBlock(label="Code")),
+                                ("code", wagtail.blocks.TextBlock(label="Code")),
                             ],
                             icon="code",
                         ),

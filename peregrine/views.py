@@ -2,8 +2,8 @@ from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.views.generic import ListView
 
-from wagtail.core.models import Site
-from wagtail.core.views import serve
+from wagtail.models import Site
+from wagtail.views import serve
 
 from .models import SitePost, PeregrineSettings
 

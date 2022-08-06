@@ -5,9 +5,9 @@ from django.utils.timezone import now
 
 from modelcluster.fields import ParentalManyToManyField
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.panels import FieldPanel, StreamFieldPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.core.fields import RichTextField
+from wagtail.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 

@@ -8,8 +8,8 @@ import django.db.models.deletion
 import django.utils.timezone
 import modelcluster.fields
 import wagtail.contrib.table_block.blocks
-import wagtail.core.blocks
-import wagtail.core.fields
+import wagtail.blocks
+import wagtail.fields
 import wagtail.documents.blocks
 import wagtail.embeds.blocks
 import wagtail.images.blocks
@@ -60,25 +60,25 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "body",
-                    wagtail.core.fields.StreamField(
+                    wagtail.fields.StreamField(
                         (
                             (
                                 "heading",
-                                wagtail.core.blocks.TextBlock(
+                                wagtail.blocks.TextBlock(
                                     icon="title",
                                     template="wagtailcontentstream/blocks/heading.html",
                                 ),
                             ),
                             (
                                 "paragraph",
-                                wagtail.core.blocks.RichTextBlock(
+                                wagtail.blocks.RichTextBlock(
                                     features=["bold", "italic", "link", "ol", "ul"],
                                     icon="pilcrow",
                                 ),
                             ),
                             (
                                 "image",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "image",
@@ -86,7 +86,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "caption",
-                                            wagtail.core.blocks.TextBlock(
+                                            wagtail.blocks.TextBlock(
                                                 required=False
                                             ),
                                         ),
@@ -106,11 +106,11 @@ class Migration(migrations.Migration):
                             ),
                             (
                                 "code",
-                                wagtail.core.blocks.StructBlock(
+                                wagtail.blocks.StructBlock(
                                     (
                                         (
                                             "language",
-                                            wagtail.core.blocks.ChoiceBlock(
+                                            wagtail.blocks.ChoiceBlock(
                                                 choices=[
                                                     ("bash", "Bash/Shell"),
                                                     ("css", "CSS"),
@@ -128,7 +128,7 @@ class Migration(migrations.Migration):
                                         ),
                                         (
                                             "code",
-                                            wagtail.core.blocks.TextBlock(label="Code"),
+                                            wagtail.blocks.TextBlock(label="Code"),
                                         ),
                                     ),
                                     icon="code",
@@ -140,7 +140,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "excerpt",
-                    wagtail.core.fields.RichTextField(
+                    wagtail.fields.RichTextField(
                         blank=True,
                         help_text="An short excerpt or abstract about the content.",
                         null=True,

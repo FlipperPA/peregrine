@@ -1,6 +1,6 @@
 from django.urls import include, path, re_path
 
-from wagtail.core import urls as wagtail_urls
+from wagtail import urls as wagtail_urls
 
 from .views import PostsListView, AuthorPostsListView, CategoryPostsListView, PostsFeed
 

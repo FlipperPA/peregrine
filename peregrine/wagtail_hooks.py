@@ -2,8 +2,8 @@ from django.conf import settings
 from django.db import connection
 
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
-from wagtail.core import hooks
-from wagtail.core.models import Site
+from wagtail import hooks
+from wagtail.models import Site
 
 from .models import Category, PeregrineSettings
 
