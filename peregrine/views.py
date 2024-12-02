@@ -87,7 +87,7 @@ class PostsFeed(Feed):
 
     def get_object(self, request, *args, **kwargs):
         kwargs["count"] = PeregrineSettings.for_site(
-            Site.find_for_request(request.site)
+            Site.find_for_request(request)
         ).post_number_rss
         return kwargs["count"]
 
